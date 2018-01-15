@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Ui Design Patterns By Example</string>
+
+    <string name="menu_clicker_mvc">Clicker - MVC</string>
+    <string name="menu_clicker_mvvm">Clicker - MVVM</string>
+    <string name="menu_clicker_mvp">Clicker - MVP</string>
+    <string name="menu_long_press_clicker_mvc">Long Press Clicker - MVC</string>
+    <string name="menu_auto_clicker_mvp">Auto Clicker - MVP</string>
+    <string name="menu_two_thumbs_clicker_mvvm">Two Thumbs Clicker - MVVM</string>
+
+    <string name="set_count">Set Count</string>
+
+    <string name="local_and_global">%s / %s</string>
+</resources>

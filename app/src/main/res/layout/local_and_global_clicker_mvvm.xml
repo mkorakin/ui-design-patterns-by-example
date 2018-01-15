@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker.ClickerViewModel"/>
+
+        <variable
+            name="controller"
+            type="com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.ClickerController"/>
+
+    </data>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:onClick="@{(v) -> controller.incrementCount()}"
+        android:text="@{@string/local_and_global(String.valueOf(vm.localCount), String.valueOf(vm.globalCount))}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</layout>

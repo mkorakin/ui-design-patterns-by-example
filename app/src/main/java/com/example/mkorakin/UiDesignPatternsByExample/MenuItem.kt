@@ -1,0 +1,22 @@
+package com.example.mkorakin.UiDesignPatternsByExample
+
+import com.example.mkorakin.UiDesignPatternsByExample.clickers.AutoClicker.AutoClickerActivity
+import com.example.mkorakin.UiDesignPatternsByExample.clickers.LongPressClicker.LongPressClickerActivity
+import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.SimpleClickerMvcActivity
+import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvp.SimpleClickerMvpActivity
+import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvvm.SimpleClickerMvvmActivity
+import com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker.TwoThumbsClickerActivity
+
+enum class MenuItem(val label: Int, val activity: Class<*>) {
+
+    SIMPLE_CLICKER_MVC(R.string.menu_clicker_mvc, SimpleClickerMvcActivity::class.java as Class<*>),
+    SIMPLE_CLICKER_MVVM(R.string.menu_clicker_mvvm, SimpleClickerMvvmActivity::class.java as Class<*>),
+    SIMPLE_CLICKER_MVP(R.string.menu_clicker_mvp, SimpleClickerMvpActivity::class.java as Class<*>),
+    LONG_PRESS_CLICKER_MVC(R.string.menu_long_press_clicker_mvc, LongPressClickerActivity::class.java as Class<*>),
+    TWO_THUMBS_CLICKER_MVVM(R.string.menu_two_thumbs_clicker_mvvm, TwoThumbsClickerActivity::class.java as Class<*>),
+    AUTO_CLICKER_MVP(R.string.menu_auto_clicker_mvp, AutoClickerActivity::class.java as Class<*>);
+
+    interface Controller {
+        fun select(item: MenuItem)
+    }
+}
