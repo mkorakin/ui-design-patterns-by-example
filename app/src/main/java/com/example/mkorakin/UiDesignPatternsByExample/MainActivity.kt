@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), MenuItem.Controller {
                         MenuItem.SIMPLE_CLICKER_MVP,
                         MenuItem.LONG_PRESS_CLICKER_MVC,
                         MenuItem.TWO_THUMBS_CLICKER_MVVM,
-                        MenuItem.AUTO_CLICKER_MVP
+                        MenuItem.CLICKER_EDITOR_MVP
                 ),
                 this)
 

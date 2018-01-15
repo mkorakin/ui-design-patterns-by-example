@@ -1,4 +1,4 @@
-package com.example.mkorakin.UiDesignPatternsByExample.clickers.AutoClicker
+package com.example.mkorakin.UiDesignPatternsByExample.clickers.ClickerEditor
 
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
 import io.reactivex.Observable
@@ -9,14 +9,14 @@ import java.util.concurrent.TimeUnit
 /**
  * An example illustrating the Presenter ability to access the View.
  *
- * In this example, the Presenter inspects an [AutoClickerView.isEditing] state to
+ * In this example, the Presenter inspects an [ClickerEditorView.isEditing] state to
  * prevent changes to the View while editing.
- * [AutoClickerView.isEditing] state is maintained within the View.
+ * [ClickerEditorView.isEditing] state is maintained within the View.
  *
- * To simulate model changes while editing - the [AutoClickerPresenter] maintains
+ * To simulate model changes while editing - the [ClickerEditorPresenter] maintains
  * a timer to increment the model every second.
  */
-internal class AutoClickerPresenter {
+internal class ClickerEditorPresenter {
 
     private val model = App.model
     private var subscriptions: CompositeDisposable = CompositeDisposable()
@@ -26,7 +26,7 @@ internal class AutoClickerPresenter {
     // Observing the Model's state and presenting it on the View.
     //
 
-    fun bind(view: AutoClickerView) {
+    fun bind(view: ClickerEditorView) {
         unbind()
 
         // Querying the View to check if isEditing before presenting the count on it.

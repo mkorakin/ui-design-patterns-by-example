@@ -20,7 +20,7 @@
         <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvp.SimpleClickerMvpActivity"/>
         <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.SimpleClickerMvcActivity"/>
         <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.LongPressClicker.LongPressClickerActivity"/>
-        <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.AutoClicker.AutoClickerActivity"/>
+        <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.ClickerEditor.ClickerEditorActivity"/>
         <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker.TwoThumbsClickerActivity"/>
     </application>
 

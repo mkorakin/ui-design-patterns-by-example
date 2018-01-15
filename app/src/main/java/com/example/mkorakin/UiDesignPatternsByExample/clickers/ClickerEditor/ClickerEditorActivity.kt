@@ -1,4 +1,4 @@
-package com.example.mkorakin.UiDesignPatternsByExample.clickers.AutoClicker
+package com.example.mkorakin.UiDesignPatternsByExample.clickers.ClickerEditor
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,17 +8,17 @@ import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import com.example.mkorakin.UiDesignPatternsByExample.R
-import com.example.mkorakin.UiDesignPatternsByExample.databinding.AutoClickerMvpBinding
+import com.example.mkorakin.UiDesignPatternsByExample.databinding.ClickerEditorMvpBinding
 
 
-class AutoClickerActivity : AppCompatActivity() {
+class ClickerEditorActivity : AppCompatActivity() {
 
-    private val presenter = AutoClickerPresenter()
+    private val presenter = ClickerEditorPresenter()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<AutoClickerMvpBinding>(this, R.layout.auto_clicker_mvp)
+        val binding = DataBindingUtil.setContentView<ClickerEditorMvpBinding>(this, R.layout.clicker_editor_mvp)
 
         binding.background.setOnTouchListener({ v, _ ->
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -32,7 +32,7 @@ class AutoClickerActivity : AppCompatActivity() {
             }
         }
 
-        presenter.bind(object : AutoClickerView {
+        presenter.bind(object : ClickerEditorView {
             override fun isEditing(): Boolean {
                 return binding.count.isFocused
             }
