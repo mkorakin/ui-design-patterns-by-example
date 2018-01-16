@@ -22,9 +22,6 @@
 ### Long-Press Clicker
 A button than can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
 
-### Two Thumbs Clicker
-Two buttons, each showing both the global count and the count each was clicked.
-
 ### Clicker Editor
 A clicker that uses the same text box to allow editing of the global counter value, and to show the count.
 The count is auto-incremented every second, and the UI shouldn\`t update while the count is being edited.
@@ -61,7 +58,15 @@ While this illustrates the structure of each pattern, all implementations exhibi
 ## Two Thumbs Clicker - MVVM
 A View Model allows us to maintain a view state that is decoupled from the Model. 
 
-In Two Thumbs Clicker each [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/LocalAndGlobalClickerViewModel.kt) holds a separate count. This count can then be displayed and controlled by 2 different buttons.
+In Two Thumbs Clicker we want to display two buttons, each showing both the global count and their own count.   
+  
+To implement this, each [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/LocalAndGlobalClickerViewModel.kt) maintains a separate count. Two View Models are created, each bound to a button. When asked to increment count, the View Model modifies both its own and the application's model state:
+```kotlin
+fun incrementCount() {
+    model.incrementCount()
+    localCount.set(localCount.get()?.plus(1))
+}
+```
 
 ## Long-Press Clicker - MVC
 A Controller can encapsulate control logic, separating it from the code that is responsible for reflecting the model state on the View.
