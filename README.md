@@ -52,9 +52,9 @@ For example - adding persistency to remember the count when the app is reopened,
 ## Simple Clicker - MVC, MVVM, MVP
 
 The exact same Simple Clicker (a button that displays a count of the total clicks) is implemented in 3 design patterns:
- - [**SimpleClickerController**](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt)
- - [**SimpleClickerViewModel**](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt)
- - [**SimpleClickerPresenter**](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt)
+ - [**Simple Clicker - MVC**](#simple-clicker---mvc)
+ - [**Simple Clicker - MVVM**](#simple-clicker---mvvm)
+ - [**Simple Clicker - MVP**](#simple-clicker---mvp)
 
 While this illustrates the structure of each pattern, all implementations exhibit the same basic behavior: The View continuously reflects the state of the Model.
 
