@@ -115,7 +115,7 @@ model.count()
 ```
 In MVC The Controller provides the View with the api to modify the Model.
 
-In the clicker example, the [Controller]((/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt)) exposes:
+In the clicker example, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt) exposes:
 ```kotlin
 fun incrementCount() {
     model.incrementCount()
