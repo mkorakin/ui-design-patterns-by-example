@@ -23,7 +23,8 @@ The Model represents a global state of the application.
 In the clicker app, the same [Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/Model.kt) is used by all the examples. The model provides an interface for observing and for modifying its state:
 
 ```kotlin
-fun count() : Observable<Int>
+val count : Observable<Int>
+  
 fun incrementCount()
 fun setCount(count: Int)
 ```
@@ -115,7 +116,7 @@ val count: ObservableField<Int>
 ```
 The View Model observes the Model and modifies its state accordingly:
 ```kotlin
-model.count().subscribe(count::set)
+model.count.subscribe(count::set)
 ```
 
 ### Simple Clicker - MVP
@@ -147,7 +148,7 @@ In MVP the Presenter is aware of the View, and presents on it a reflection of th
 In the clicker example, the [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt) 
 observes the Model and presents it on the View:
 ```kotlin
-model.count().subscribe(view::displayCount)
+model.count.subscribe(view::displayCount)
 ```
 It also exposes the same ```incrementCount``` control exposed by MVVM and MVC.
 
@@ -192,7 +193,7 @@ In Clicker Editor we want a clicker that uses the same text box to allow editing
 To implement this,in [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
 [View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) state to prevent presenting Model.count updates while the user is editing:
 ```kotlin
-model.count()
+model.count
     .filter({ !view.isEditing() })
     .subscribe(view::displayCount))
 ```
