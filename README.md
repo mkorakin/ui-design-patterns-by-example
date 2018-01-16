@@ -3,19 +3,19 @@
 **The same Simple Clicker is implemented in 3 design patterns: MVC, MVVM, and MVP.**
 
 **Then more features are added to highlight traits of each pattern.**
-
-- [The Features](#the-features)
-  * [Simple Clicker](#simple-clicker)
-  * [Long-Press Clicker](#long-press-clicker)
-  * [Two Thumbs Clicker](#two-thumbs-clicker)
-  * [Clicker Editor](#clicker-editor)
+  
 - [The Model](#the-model)
 - [Examples](#examples)
   * [Simple Clicker - MVC, MVVM, MVP](#simple-clicker---mvc-mvvm-mvp)
   * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm)
   * [Long-Press Clicker - MVC](#long-press-clicker---mvc)
   * [Clicker Editor - MVP](#clicker-editor---mvp)
-
+- [Simple Clicker](#simple-clicker)
+  * [Simple Clicker - MVC](#simple-clicker---mvc)
+  * [Simple Clicker - MVVM](#simple-clicker---mvvm)
+  * [Simple Clicker - MVP](#simple-clicker---mvp)
+  
+    
 # The Model
 
 The Model represents a global state of the application. 
