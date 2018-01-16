@@ -5,37 +5,7 @@ import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc
 import io.reactivex.disposables.Disposable
 
 /**
- * │
- * │                        MVP
- * │
- * │
- * │    ┌───────────────────────────────────────────────┐
- * │    │                                               │
- * │    │  View                                         │
- * │    │                                               │
- * │    └───────────────────────────────────────────────┘
- * │       ▲                                        |
- * │       | Modify [ClickerView.displayCount]      | Modify [incrementCount]
- * |       |                                        ▼
- * │    ┌───────────────────────────────────────────────┐
- * │    │                                               │
- * │    │  Presenter                                    │
- * │    │                                               │
- * │    └───────────────────────────────────────────────┘
- * │        ┋                                       |
- * │        ┋ Observe                               | Modify
- * │        ▽                                       ▼
- * │    ┌───────────────────────────────────────────────┐
- * │    │                                               │
- * │    │  Model                                        │
- * │    │                                               │
- * │    └───────────────────────────────────────────────┘
- * │
- * │    # Who Knows Who
- * │        - The Presenter observes the Model and presents its state on the View.
- * │        - The View knows the Presenter and uses it to change the Model's state.
- * │
- *
+ * A Presenter presenting the Model on a [ClickerView].
  */
 internal class SimpleClickerPresenter : ClickerController {
 
@@ -43,27 +13,25 @@ internal class SimpleClickerPresenter : ClickerController {
     private var subscription: Disposable? = null
 
 
-    ////////////////////////////////////////////////////////////////////////
-    // Observing the Model's state and presenting it on the View.
-    //
-
+    /**
+     * Bind a view to be presented on.
+     * Observes changes in the Model and presents them on the View.
+     */
     fun bind(view: ClickerView) {
         unbind()
-        subscription = this.model.count().subscribe(view::displayCount)
+        subscription = model.count().subscribe(view::displayCount)
     }
 
-    ////////////////////////////////////////////////////////////////////////
-    // Exposed controls - Allowing a View to control the state of the Model.
-    //
-
+    /**
+     * Increment the click count.
+     */
     override fun incrementCount() {
         model.incrementCount()
     }
 
-    ////////////////////////////////////////////////////////////////////////
-    // Clean ups.
-    //
-
+    /**
+     * Unbind the View from this Presenter.
+     */
     fun unbind() {
         subscription?.dispose()
     }

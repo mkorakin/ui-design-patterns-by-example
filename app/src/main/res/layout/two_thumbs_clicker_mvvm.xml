@@ -7,11 +7,11 @@
 
         <variable
             name="vmA"
-            type="com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker.LocalAndGlobalClickerViewModel"/>
+            type="com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker.StatefulClickerViewModel"/>
 
         <variable
             name="vmB"
-            type="com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker.LocalAndGlobalClickerViewModel"/>
+            type="com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker.StatefulClickerViewModel"/>
 
     </data>
 

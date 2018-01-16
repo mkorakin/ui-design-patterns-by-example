@@ -7,84 +7,36 @@ import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc
 import io.reactivex.disposables.Disposable
 
 /**
- * │
- * │                        MVVM
- * │
- * │
- * │    ┌───────────────────────────────────────────────┐
- * │    │                                               │
- * │    │  View                                         │
- * │    │                                               │
- * │    └───────────────────────────────────────────────┘
- * │        ┋                             │
- * │        ┋ Observe [count]             │ Modify [incrementCount]
- * │        ▽                             ▼
- * │    ┌───────────────────────────────────────────────┐
- * │    │                                               │
- * │    │  View Model                                   │
- * │    │                                               │
- * │    └───────────────────────────────────────────────┘
- * │        ┋                             |
- * │        ┋ Observe                     | Modify
- * │        ▽                             ▼
- * │    ┌───────────────────────────────────────────────┐
- * │    │                                               │
- * │    │  Model                                        │
- * │    │                                               │
- * │    └───────────────────────────────────────────────┘
- * │
- * │    # Who Knows Who
- * │        - The View:
- * │            - Observes the View Model and reflects its state.
- * │            - Modifies the state of the View Model.
- * │        - The View Model
- * │            - Observes the state of the Model and modifies its own state accordingly.
- * │            - Modifies the state of the Model.
- * │
- *
- * Similarly to MVC, in MVVM the View reflects a model, only this time not directly
- * the global Model.
- *
- * In this example the View Model supplies the View with a [count] property and an
- * [incrementCount] method to control the model.
- *
+ * A View Model representing the state of a clicker.
  */
 internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel, ClickerController {
 
     private val model = App.model
     private var subscription: Disposable
 
-
-    ////////////////////////////////////////////////////////////////////////
-    // Exposed state - To be displayed by a bound view.
-    //
-
+    /**
+     * Click count.
+     */
     override val count: ObservableField<Int> = ObservableField()
 
-
-    ////////////////////////////////////////////////////////////////////////
-    // Exposed controls - Allowing a View to control the state of the model.
-    //
-
+    /**
+     * Increment the click count.
+     */
     override fun incrementCount() {
         model.incrementCount()
     }
 
-
-    ////////////////////////////////////////////////////////////////////////
-    // Observing the Model's state and modifying the View Model's state
-    // accordingly.
-    //
-
+    /**
+     * Observe the [Model]'s state and modify the local state accordingly.
+     */
     init {
         subscription = model.count().subscribe(count::set)
     }
 
 
-    ////////////////////////////////////////////////////////////////////////
-    // Clean ups.
-    //
-
+    /**
+     * Stop observing the Model.
+     */
     override fun onCleared() {
         subscription.dispose()
         super.onCleared()

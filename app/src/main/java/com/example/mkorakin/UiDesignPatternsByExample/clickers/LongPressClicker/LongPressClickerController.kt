@@ -1,18 +1,13 @@
 package com.example.mkorakin.UiDesignPatternsByExample.clickers.LongPressClicker
 
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
-import com.example.mkorakin.UiDesignPatternsByExample.Model.Model
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
 /**
- * An example illustrating a stateful Controller logic.
- *
- * In this example, [LongPressClickerController] maintains timers that
- * accelerate the speed of automatic clicks while the clicker is pressed.
- *
- * The state of the View is still a direct reflection of the [Model].
+ * A Controller for a clicker that can be long pressed to automatically generate clicks.
+ * The longer pressed, the faster clicks will be generated.
  */
 internal class LongPressClickerController {
 
@@ -36,10 +31,9 @@ internal class LongPressClickerController {
         @Synchronized set
 
 
-    ////////////////////////////////////////////////////////////////////////
-    // Exposed controls - Allowing a View to control the state of the model.
-    //
-
+    /**
+     * Start auto incrementing the count.
+     */
     fun onPress() {
         timerSubscription = accelerationTimer
                 .doOnNext({ autoIncrementing = true })
@@ -51,6 +45,9 @@ internal class LongPressClickerController {
                 .subscribe({ model.incrementCount() })
     }
 
+    /**
+     * Stop auto incrementing the count.
+     */
     fun onRelease() {
         timerSubscription?.dispose()
         timerSubscription = null

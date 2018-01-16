@@ -7,14 +7,7 @@ import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit
 
 /**
- * An example illustrating the Presenter ability to access the View.
- *
- * In this example, the Presenter inspects an [ClickerEditorView.isEditing] state to
- * prevent changes to the View while editing.
- * [ClickerEditorView.isEditing] state is maintained within the View.
- *
- * To simulate model changes while editing - the [ClickerEditorPresenter] maintains
- * a timer to increment the model every second.
+ * A Presenter presenting changes in the clicker count on a bound [ClickerEditorView].
  */
 internal class ClickerEditorPresenter {
 
@@ -22,16 +15,17 @@ internal class ClickerEditorPresenter {
     private var subscriptions: CompositeDisposable = CompositeDisposable()
     private var timer = Observable.interval(1, TimeUnit.SECONDS)
 
-    ////////////////////////////////////////////////////////////////////////
-    // Observing the Model's state and presenting it on the View.
-    //
-
+    /**
+     * Bind a view to be presented on.
+     * Changes in the model won't be presented while [ClickerEditorView.isEditing]
+     * is true.
+     */
     fun bind(view: ClickerEditorView) {
         unbind()
 
-        // Querying the View to check if isEditing before presenting the count on it.
         subscriptions.add(
                 this.model.count()
+                        // Querying the View to check if isEditing before presenting the count on it.
                         .filter({ !view.isEditing() })
                         .subscribe(view::displayCount))
 
@@ -43,18 +37,16 @@ internal class ClickerEditorPresenter {
         )
     }
 
-    ////////////////////////////////////////////////////////////////////////
-    // Exposed controls - Allowing a View to control the state of the model.
-    //
-
+    /**
+     * Set the global count of the app.
+     */
     fun setCount(count: Int) {
         model.setCount(count)
     }
 
-    ////////////////////////////////////////////////////////////////////////
-    // Clean ups.
-    //
-
+    /**
+     * Unbind the View from this Presenter.
+     */
     fun unbind() {
         subscriptions.dispose()
         subscriptions = CompositeDisposable()

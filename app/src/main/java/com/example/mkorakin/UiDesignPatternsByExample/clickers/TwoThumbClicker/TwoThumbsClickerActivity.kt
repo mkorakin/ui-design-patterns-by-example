@@ -17,8 +17,8 @@ class TwoThumbsClickerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<TwoThumbsClickerMvvmBinding>(this, R.layout.two_thumbs_clicker_mvvm)
 
-        binding.vmA = ViewModelProviders.of(this).get("clickerA", LocalAndGlobalClickerViewModel::class.java)
-        binding.vmB = ViewModelProviders.of(this).get("clickerB", LocalAndGlobalClickerViewModel::class.java)
+        binding.vmA = ViewModelProviders.of(this).get("clickerA", StatefulClickerViewModel::class.java)
+        binding.vmB = ViewModelProviders.of(this).get("clickerB", StatefulClickerViewModel::class.java)
     }
 
 }
