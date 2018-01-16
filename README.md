@@ -4,6 +4,18 @@
 
 **Then more features are added to highlight traits of each pattern.**
 
+- [The Features](#the-features)
+  * [Simple Clicker](#simple-clicker)
+  * [Long-Press Clicker](#long-press-clicker)
+  * [Two Thumbs Clicker](#two-thumbs-clicker)
+  * [Clicker Editor](#clicker-editor)
+- [The Model](#the-model)
+- [Examples](#examples)
+  * [Simple Clicker - MVC, MVVM, MVP](#simple-clicker---mvc-mvvm-mvp)
+  * [Two Thumbs Clicker](#two-thumbs-clicker-1)
+  * [Long-Press Clicker](#long-press-clicker-1)
+  * [Clicker Editor](#clicker-editor-1)
+
 # The Features
 
 ### Simple Clicker
