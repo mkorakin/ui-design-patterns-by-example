@@ -12,9 +12,9 @@
 - [The Model](#the-model)
 - [Examples](#examples)
   * [Simple Clicker - MVC, MVVM, MVP](#simple-clicker---mvc-mvvm-mvp)
-  * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker-1)
-  * [Long-Press Clicker - MVC](#long-press-clicker-1)
-  * [Clicker Editor - MVP](#clicker-editor-1)
+  * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm)
+  * [Long-Press Clicker - MVC](#long-press-clicker---mvc)
+  * [Clicker Editor - MVP](#clicker-editor---mvp)
 
 # The Features
 
