@@ -6,14 +6,13 @@
   
 - [The Model](#the-model)
 - [Examples](#examples)
-  * [Simple Clicker - MVC, MVVM, MVP](#simple-clicker---mvc-mvvm-mvp)
+  * [Simple Clicker](#simple-clicker---mvc-mvvm-mvp)
+    + [MVC](#simple-clicker---mvc)
+    + [MVVM](#simple-clicker---mvvm)
+    + [MVP](#simple-clicker---mvp)
   * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm)
   * [Long-Press Clicker - MVC](#long-press-clicker---mvc)
   * [Clicker Editor - MVP](#clicker-editor---mvp)
-- [Simple Clicker](#simple-clicker)
-  * [Simple Clicker - MVC](#simple-clicker---mvc)
-  * [Simple Clicker - MVVM](#simple-clicker---mvvm)
-  * [Simple Clicker - MVP](#simple-clicker---mvp)
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
 
