@@ -15,7 +15,8 @@
   * [Simple Clicker - MVVM](#simple-clicker---mvvm)
   * [Simple Clicker - MVP](#simple-clicker---mvp)
   
-    
+Any suggestions for more examples, or different implementations/interpretations are most welcome.
+
 # The Model
 
 The Model represents a global state of the application. 
@@ -59,7 +60,7 @@ fun incrementCount() {
 ## Long-Press Clicker - MVC
 A Controller can encapsulate control logic, separating it from presentation logic.
 
-In Long-Press Clicker we want a button than can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
+In Long-Press Clicker we want a button that can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
 
 To implement this, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/LongPressClicker/LongPressClickerController.kt) will maintain a state using timers for auto-incrementing:
 ```kotlin
