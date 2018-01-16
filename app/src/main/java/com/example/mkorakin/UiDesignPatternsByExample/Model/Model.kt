@@ -9,7 +9,7 @@ import io.reactivex.Observable
  */
 interface Model {
 
-    fun count() : Observable<Int>
+    val count : Observable<Int>
 
     fun incrementCount()
 

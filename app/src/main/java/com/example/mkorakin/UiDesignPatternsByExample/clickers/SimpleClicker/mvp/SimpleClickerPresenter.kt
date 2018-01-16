@@ -19,7 +19,7 @@ internal class SimpleClickerPresenter : ClickerController {
      */
     fun bind(view: ClickerView) {
         unbind()
-        subscription = model.count().subscribe(view::displayCount)
+        subscription = model.count.subscribe(view::displayCount)
     }
 
     /**

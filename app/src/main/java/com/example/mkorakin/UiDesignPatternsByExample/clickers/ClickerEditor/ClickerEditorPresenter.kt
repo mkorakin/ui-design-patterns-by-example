@@ -24,7 +24,7 @@ internal class ClickerEditorPresenter {
         unbind()
 
         subscriptions.add(
-                this.model.count()
+                model.count
                         // Querying the View to check if isEditing before presenting the count on it.
                         .filter({ !view.isEditing() })
                         .subscribe(view::displayCount))

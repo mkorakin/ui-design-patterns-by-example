@@ -38,7 +38,7 @@ class StatefulClickerViewModel : ViewModel(), ClickerViewModel, ClickerControlle
      * Binding the application model to the displayed global count.
      */
     init {
-        subscription = model.count().subscribe(globalCount::set)
+        subscription = model.count.subscribe(globalCount::set)
     }
 
     /**

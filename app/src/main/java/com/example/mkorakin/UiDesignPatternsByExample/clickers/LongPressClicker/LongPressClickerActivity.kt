@@ -32,7 +32,7 @@ class LongPressClickerActivity : AppCompatActivity() {
         })
 
         subscription = App.model
-                .count()
+                .count
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ count -> binding.clickerButton.text = count.toString() })
     }

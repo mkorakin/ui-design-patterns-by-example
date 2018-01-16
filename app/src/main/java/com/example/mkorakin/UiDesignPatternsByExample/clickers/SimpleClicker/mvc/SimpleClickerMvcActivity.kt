@@ -18,7 +18,7 @@ class SimpleClickerMvcActivity : AppCompatActivity() {
 
         binding.controller = SimpleClickerController()
         subscription = App.model
-                .count()
+                .count
                 .subscribe({ count -> binding.simpleClickerButton.text = count.toString() })
     }
 

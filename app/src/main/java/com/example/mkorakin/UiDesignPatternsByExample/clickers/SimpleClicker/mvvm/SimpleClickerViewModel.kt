@@ -30,7 +30,7 @@ internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel, ClickerCo
      * Observe the [Model]'s state and modify the local state accordingly.
      */
     init {
-        subscription = model.count().subscribe(count::set)
+        subscription = model.count.subscribe(count::set)
     }
 
 
