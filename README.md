@@ -18,11 +18,9 @@
 
 # The Model
 
-The Model represents the state of the Application. 
+The Model represents a global state of the application. 
 
-In the clicker examples, the same [Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/Model.kt) is used by 
-all the examples.
-The Model provides an interface for observing and for modifying its state:
+In the clicker app, the same [Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/Model.kt) is used by all the examples. The model provides an interface for observing and for modifying its state:
 
 ```kotlin
 fun count() : Observable<Int>
@@ -31,8 +29,7 @@ fun setCount(count: Int)
 ```
 
 At first we may want to implement the Model using a simple [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt).
-This can later be modified without changes to the rest of the code.
-For example - adding persistency to remember the count when the app is reopened, adding server support to allow changing the same count from different devices, and so on.
+This can later be modified without changes to the rest of the code (for example - adding persistency to remember the count when the app is reopened, adding server support to allow changing the same count from different devices, and so on.).
 
 # Examples
 
