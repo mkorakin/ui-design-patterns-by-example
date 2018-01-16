@@ -75,3 +75,30 @@ As a Presenter holds a reference to the View, it can access its state.
 
 In [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
 [View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) state to prevent presenting Model.count updates while the user is editing.
+
+# Code Walk-Through
+## Simple Clicker - MVC
+```
+┌───────────────────────────────────────────────┐
+│                                               │
+│  View                                         │
+│                                               │
+└───────────────────────────────────────────────┘
+    ┋                              │
+    ┋                              │
+    ┋ Observe [Model.count]        │ Modify [incrementCount]
+    ┋                              ▼
+    ┋                   ┌───────────────────────┐
+    ┋                   │                       │
+    ┋                   │      Controller       │
+    ┋                   │                       │
+    ┋                   └───────────────────────┘
+    ┋                              │
+    ┋                              │ Modify
+    ▽                              ▼
+┌───────────────────────────────────────────────┐
+│                                               │
+│  Model                                        │
+│                                               │
+└───────────────────────────────────────────────┘
+```
