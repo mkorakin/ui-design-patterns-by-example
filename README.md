@@ -104,9 +104,53 @@ In [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatt
 ```
 In MVC The Controller provides the View with the api to modfiy the Model.
 
-In this example, the [Controller]((/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt)) exposes:
+In the clicker example, the [Controller]((/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt)) exposes:
 ```kotlin
-fun incrementCount()
+fun incrementCount() {
+    applicationModel.incrementCount()
+}
 ```
 
 To reflect the Model's state, the View binds to it directly.
+
+## Simple Clicker - MVVM
+```
+┌───────────────────────────────────────────────┐
+│                                               │
+│  View                                         │
+│                                               │
+└───────────────────────────────────────────────┘
+    ┋                             │
+    ┋ Observe [count]             │ Modify [incrementCount]
+    ▽                             ▼
+┌───────────────────────────────────────────────┐
+│                                               │
+│  View Model                                   │
+│                                               │
+└───────────────────────────────────────────────┘
+    ┋                             |
+    ┋ Observe                     | Modify
+    ▽                             ▼
+┌───────────────────────────────────────────────┐
+│                                               │
+│  Model                                        │
+│                                               │
+└───────────────────────────────────────────────┘
+```
+In MVVM the View refelects the state of the View Model.
+
+In the clicker example, the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt) exposes:  
+**Controls for modifying the state**
+```kotlin
+fun incrementCount() {
+    applicationModel.incrementCount()
+}
+```
+**The state to be reflected by the View**
+```kotlin
+val count: ObservableField<Int>
+```
+The View Model observes the Model and modifies its state accordingly:
+```kotlin
+applicationModel.count().subscribe(count::set)
+```
