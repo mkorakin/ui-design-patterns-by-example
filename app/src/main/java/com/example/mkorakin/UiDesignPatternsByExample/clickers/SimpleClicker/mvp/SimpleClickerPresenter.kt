@@ -5,35 +5,36 @@ import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc
 import io.reactivex.disposables.Disposable
 
 /**
- * # MVP
- *
- * |
- * |    +---------------------------------------------------------+
- * |    |                                                         |
- * |    |    View                                                 |
- * |    |                                                         |
- * |    +---------------------------------------------------------+
- * |       ▲                                          |
- * |       | Modify [ClickerView.displayCount]        | Modify [incrementCount]
- * |       |                                          ▼
- * |    +---------------------------------------------------------+
- * |    |                                                         |
- * |    |    Presenter                                            |
- * |    |                                                         |
- * |    +---------------------------------------------------------+
- * |        :                                        |
- * |        : Observe                                | Modify
- * |        ▽                                        ▼
- * |    +---------------------------------------------------------+
- * |    |                                                         |
- * |    |    Model                                                |
- * |    |                                                         |
- * |    +---------------------------------------------------------+
- * |
- * |    # Who Knows Who
- * |     - The View knows the Presenter and uses it to change the Model's state.
- * |     - The Presenter observes the Model and presents its state on the View.
- * |
+ * │
+ * │                        MVP
+ * │
+ * │
+ * │    ┌───────────────────────────────────────────────┐
+ * │    │                                               │
+ * │    │  View                                         │
+ * │    │                                               │
+ * │    └───────────────────────────────────────────────┘
+ * │       ▲                                        |
+ * │       | Modify [ClickerView.displayCount]      | Modify [incrementCount]
+ * |       |                                        ▼
+ * │    ┌───────────────────────────────────────────────┐
+ * │    │                                               │
+ * │    │  Presenter                                    │
+ * │    │                                               │
+ * │    └───────────────────────────────────────────────┘
+ * │        ┋                                       |
+ * │        ┋ Observe                               | Modify
+ * │        ▽                                       ▼
+ * │    ┌───────────────────────────────────────────────┐
+ * │    │                                               │
+ * │    │  Model                                        │
+ * │    │                                               │
+ * │    └───────────────────────────────────────────────┘
+ * │
+ * │    # Who Knows Who
+ * │        - The Presenter observes the Model and presents its state on the View.
+ * │        - The View knows the Presenter and uses it to change the Model's state.
+ * │
  *
  */
 internal class SimpleClickerPresenter : ClickerController {

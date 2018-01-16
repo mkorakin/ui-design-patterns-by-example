@@ -3,52 +3,51 @@ package com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mv
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
-import com.example.mkorakin.UiDesignPatternsByExample.Model.Model
 import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.ClickerController
 import io.reactivex.disposables.Disposable
 
 /**
- * # MVVM
+ * │
+ * │                        MVVM
+ * │
+ * │
+ * │    ┌───────────────────────────────────────────────┐
+ * │    │                                               │
+ * │    │  View                                         │
+ * │    │                                               │
+ * │    └───────────────────────────────────────────────┘
+ * │        ┋                             │
+ * │        ┋ Observe [count]             │ Modify [incrementCount]
+ * │        ▽                             ▼
+ * │    ┌───────────────────────────────────────────────┐
+ * │    │                                               │
+ * │    │  View Model                                   │
+ * │    │                                               │
+ * │    └───────────────────────────────────────────────┘
+ * │        ┋                             |
+ * │        ┋ Observe                     | Modify
+ * │        ▽                             ▼
+ * │    ┌───────────────────────────────────────────────┐
+ * │    │                                               │
+ * │    │  Model                                        │
+ * │    │                                               │
+ * │    └───────────────────────────────────────────────┘
+ * │
+ * │    # Who Knows Who
+ * │        - The View:
+ * │            - Observes the View Model and reflects its state.
+ * │            - Modifies the state of the View Model.
+ * │        - The View Model
+ * │            - Observes the state of the Model and modifies its own state accordingly.
+ * │            - Modifies the state of the Model.
+ * │
  *
- * |
- * |    +---------------------------------------------------------+
- * |    |                                                         |
- * |    |    View                                                 |
- * |    |                                                         |
- * |    +---------------------------------------------------------+
- * |         :                             |
- * |         : Observe [count]             | Modify [incrementCount]
- * |         V                             V
- * |    +---------------------------------------------------------+
- * |    |                                                         |
- * |    |    View Model                                           |
- * |    |                                                         |
- * |    +---------------------------------------------------------+
- * |         :                             |
- * |         : Observe                     | Modify
- * |         V                             V
- * |    +---------------------------------------------------------+
- * |    |                                                         |
- * |    |    Model                                                |
- * |    |                                                         |
- * |    +---------------------------------------------------------+
- * |
- * |    # Who Knows Who
- * |        - The View:
- * |            - Observes the View Model and reflects its state.
- * |            - Modifies the state of the View Model.
- * |        - The View Model
- * |            - Observes the state of the Model and modifies its own state accordingly.
- * |            - Modifies the state of the Model.
- *
- * Similarly to MVC, in MVVM the View reflects a model, only this time not the global Model.
+ * Similarly to MVC, in MVVM the View reflects a model, only this time not directly
+ * the global Model.
  *
  * In this example the View Model supplies the View with a [count] property and an
  * [incrementCount] method to control the model.
  *
- * In this simplified implementation both work directly on the [Model]:
- * Calling [incrementCount] will directly increment the [Model], which
- * then will be reflected by [count].
  */
 internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel, ClickerController {
 
