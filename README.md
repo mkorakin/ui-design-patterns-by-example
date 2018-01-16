@@ -39,8 +39,11 @@ In the clicker examples, the same [Model](/app/src/main/java/com/example/mkoraki
 all the examples.
 The Model provides an interface for observing and for modifying its state:
 
-- An observable of the **count**.
-- **incrementCount**() and **setCount**(c) for modifying the state.
+```kotlin
+fun count() : Observable<Int>
+fun incrementCount()
+fun setCount(count: Int)
+```
 
 At first we may want to implement the Model using a simple [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt).
 This can later be modified without changes to the rest of the code.
