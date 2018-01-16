@@ -16,12 +16,6 @@
   * [Long-Press Clicker - MVC](#long-press-clicker---mvc)
   * [Clicker Editor - MVP](#clicker-editor---mvp)
 
-# The Features
-
-### Clicker Editor
-A clicker that uses the same text box to allow editing of the global counter value, and to show the count.
-The count is auto-incremented every second, and the UI shouldn\`t update while the count is being edited.
-
 # The Model
 
 The Model represents the state of the Application. 
@@ -86,8 +80,15 @@ fun onPress() {
 ## Clicker Editor - MVP
 As a Presenter holds a reference to the View, it can access its state.
 
-In [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
-[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) state to prevent presenting Model.count updates while the user is editing.
+In Clicker Editor we want a clicker that uses the same text box to allow editing of the global counter value, and to show the count. The count is auto-incremented every second, and the UI shouldn't update while it is being edited.
+
+To implement this,in [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
+[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) state to prevent presenting Model.count updates while the user is editing:
+```kotlin
+model.count()
+    .filter({ !view.isEditing() })
+    .subscribe(view::displayCount))
+```
 
 # Simple Clicker
 ## Simple Clicker - MVC
