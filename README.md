@@ -47,7 +47,8 @@ A View Model allows us to maintain a view state that is decoupled from the Model
 
 In Two Thumbs Clicker we want to display two buttons, each showing both the global count and their own count.   
   
-To implement this, each [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/LocalAndGlobalClickerViewModel.kt) maintains a separate count. Two View Models are created, each bound to a button. When asked to increment count, the View Model modifies both its own and the application's model state:
+To implement this, each [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/StatefulClickerViewModel.kt) 
+maintains a separate count. Two View Models are created, each bound to a button. When asked to increment count, the View Model modifies both its own and the application's model state:
 ```kotlin
 fun incrementCount() {
     model.incrementCount()
