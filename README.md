@@ -42,7 +42,7 @@ The Model provides an interface for observing and for modifying its state:
 - An observable of the **count**.
 - **incrementCount**() and **setCount**(c) for modifying the state.
 
-At first we may want to implement the Model using a simple InMemoryModel.
+At first we may want to implement the Model using a simple [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt).
 This can later be modified without changes to the rest of the code.
 For example - adding persistency to remember the count when the app is reopened, adding server support to allow changing the same count from different devices, and so on.
 
