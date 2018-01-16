@@ -102,3 +102,11 @@ In [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatt
 │                                               │
 └───────────────────────────────────────────────┘
 ```
+In MVC The Controller provides the View with the api to modfiy the Model.
+
+In this example, the [Controller]((/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt)) exposes:
+```kotlin
+fun incrementCount()
+```
+
+To reflect the Model's state, the View binds to it directly.
