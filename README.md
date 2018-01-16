@@ -18,10 +18,6 @@
 
 # The Features
 
-
-### Long-Press Clicker
-A button than can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
-
 ### Clicker Editor
 A clicker that uses the same text box to allow editing of the global counter value, and to show the count.
 The count is auto-incremented every second, and the UI shouldn\`t update while the count is being edited.
@@ -69,9 +65,23 @@ fun incrementCount() {
 ```
 
 ## Long-Press Clicker - MVC
-A Controller can encapsulate control logic, separating it from the code that is responsible for reflecting the model state on the View.
+A Controller can encapsulate control logic, separating it from presentation logic.
 
-In Long-Press Clicker we want the count to auto-increment (and accelerate) as long as the clicker is pressed. For this the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/LongPressClicker/LongPressClickerController.kt) will maintain a state using timers for auto-incrementing.
+In Long-Press Clicker we want a button than can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
+
+To implement this, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/LongPressClicker/LongPressClickerController.kt) will maintain a state using timers for auto-incrementing:
+```kotlin
+fun onPress() {
+    accelerationTimer
+            .doOnNext({ autoIncrementing = true })
+            .switchMap({ accelerationStep ->
+                Observable.interval(
+                        (BASE_AUTO_INCREMENT_INTERVAL_MILLIS / (Math.pow(2.0, accelerationStep.toDouble()))).toLong(),
+                        TimeUnit.MILLISECONDS)
+            })
+            .subscribe({ model.incrementCount() })
+}
+```
 
 ## Clicker Editor - MVP
 As a Presenter holds a reference to the View, it can access its state.
@@ -79,7 +89,7 @@ As a Presenter holds a reference to the View, it can access its state.
 In [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
 [View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) state to prevent presenting Model.count updates while the user is editing.
 
-# Code Walk-Through
+# Simple Clicker
 ## Simple Clicker - MVC
 ```
 ┌───────────────────────────────────────────────┐
