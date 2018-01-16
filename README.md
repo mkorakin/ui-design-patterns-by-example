@@ -12,9 +12,9 @@
 - [The Model](#the-model)
 - [Examples](#examples)
   * [Simple Clicker - MVC, MVVM, MVP](#simple-clicker---mvc-mvvm-mvp)
-  * [Two Thumbs Clicker](#two-thumbs-clicker-1)
-  * [Long-Press Clicker](#long-press-clicker-1)
-  * [Clicker Editor](#clicker-editor-1)
+  * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker-1)
+  * [Long-Press Clicker - MVC](#long-press-clicker-1)
+  * [Clicker Editor - MVP](#clicker-editor-1)
 
 # The Features
 
@@ -57,17 +57,17 @@ The exact same Simple Clicker is implemented in 3 design patterns:
 
 While this illustrates the structure of each pattern, all implementations exhibit the same basic behavior: The View continuously represents the state of the Model.
 
-## Two Thumbs Clicker
+## Two Thumbs Clicker - MVVM
 A View Model allows us to maintain a view state that is decoupled from the Model. 
 
 In Two Thumbs Clicker each [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/LocalAndGlobalClickerViewModel.kt) holds a separate count. This count can then be displayed and controlled by 2 different buttons.
 
-## Long-Press Clicker
+## Long-Press Clicker - MVC
 A Controller can encapsulate control logic, separating it from the code that is responsible for reflecting the model state on the View.
 
 In Long-Press Clicker we want the count to auto-increment (and accelerate) as long as the clicker is pressed. For this the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/LongPressClicker/LongPressClickerController.kt) will maintain a state using timers for auto-incrementing.
 
-## Clicker Editor
+## Clicker Editor - MVP
 As a Presenter holds a reference to the View, it can access its state.
 
 In [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
