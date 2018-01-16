@@ -102,12 +102,12 @@ In [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatt
 │                                               │
 └───────────────────────────────────────────────┘
 ```
-In MVC The Controller provides the View with the api to modfiy the Model.
+In MVC The Controller provides the View with the api to modify the Model.
 
 In the clicker example, the [Controller]((/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt)) exposes:
 ```kotlin
 fun incrementCount() {
-    applicationModel.incrementCount()
+    model.incrementCount()
 }
 ```
 
@@ -143,7 +143,7 @@ In the clicker example, the [View Model](/app/src/main/java/com/example/mkorakin
 **Controls for modifying the state**
 ```kotlin
 fun incrementCount() {
-    applicationModel.incrementCount()
+    model.incrementCount()
 }
 ```
 **The state to be reflected by the View**
@@ -152,5 +152,38 @@ val count: ObservableField<Int>
 ```
 The View Model observes the Model and modifies its state accordingly:
 ```kotlin
-applicationModel.count().subscribe(count::set)
+model.count().subscribe(count::set)
 ```
+
+## Simple Clicker - MVP
+```
+┌───────────────────────────────────────────────┐
+│                                               │
+│  View                                         │
+│                                               │
+└───────────────────────────────────────────────┘
+   ▲                                        |
+   | Modify [ClickerView.displayCount]      | Modify [incrementCount]
+   |                                        ▼
+┌───────────────────────────────────────────────┐
+│                                               │
+│  Presenter                                    │
+│                                               │
+└───────────────────────────────────────────────┘
+    ┋                                       |
+    ┋ Observe                               | Modify
+    ▽                                       ▼
+┌───────────────────────────────────────────────┐
+│                                               │
+│  Model                                        │
+│                                               │
+└───────────────────────────────────────────────┘
+```
+In MVP the Presenter is aware of the View, and presents on it a reflection of the Model.
+
+In the clicker example, the [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt) 
+observes the Model and presents it on the View:
+```kotlin
+model.count().subscribe(view::displayCount)
+```
+It also exposes the same ```incrementCount``` control exposed by MVVM and MVC.
