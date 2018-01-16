@@ -18,8 +18,6 @@
 
 # The Features
 
-### Simple Clicker
-A button that displays a count of the total clicks.
 
 ### Long-Press Clicker
 A button than can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
@@ -53,12 +51,12 @@ For example - adding persistency to remember the count when the app is reopened,
 
 ## Simple Clicker - MVC, MVVM, MVP
 
-The exact same Simple Clicker is implemented in 3 design patterns:
+The exact same Simple Clicker (a button that displays a count of the total clicks) is implemented in 3 design patterns:
  - [**SimpleClickerController**](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt)
  - [**SimpleClickerViewModel**](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt)
  - [**SimpleClickerPresenter**](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt)
 
-While this illustrates the structure of each pattern, all implementations exhibit the same basic behavior: The View continuously represents the state of the Model.
+While this illustrates the structure of each pattern, all implementations exhibit the same basic behavior: The View continuously reflects the state of the Model.
 
 ## Two Thumbs Clicker - MVVM
 A View Model allows us to maintain a view state that is decoupled from the Model. 
