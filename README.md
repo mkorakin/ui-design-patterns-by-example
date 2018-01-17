@@ -18,7 +18,7 @@ Any suggestions for more examples, or different implementations/interpretations 
 
 # The Model
 
-The Model represents a global state of the application. 
+The Model represents the state of the application. 
 
 For the clicker [Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/Model.kt) we provide an interface for observing and for modifying the global click state:
 
