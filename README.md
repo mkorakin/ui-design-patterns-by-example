@@ -160,9 +160,12 @@ binding.controller = vm
 In MVP the Presenter is aware of the View, and presents on it a reflection of the Model.
 
 In the clicker example, the [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt) 
-observes the Model and presents it on the View:
+can be bound to a [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt)
+. The Model is observed for presenting it on the View:
 ```kotlin
-model.count.subscribe(view::displayCount)
+fun bind(view: ClickerView) {
+    model.count.subscribe(view::displayCount)
+}
 ```
 In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerMvpActivity.kt) 
 we implent the [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt)
