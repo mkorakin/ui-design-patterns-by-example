@@ -80,10 +80,13 @@ This is done in the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignP
 ```kotlin
 val binding = DataBindingUtil.setContentView<SimpleClickerMvcBinding>(this, R.layout.simple_clicker_mvc)
   
-binding.controller = SimpleClickerController()
+// Bind Model -> View
 App.model.count.subscribe({ count -> 
         binding.simpleClickerButton.text = count.toString() 
     })
+  
+// Bind View -> Controller
+binding.controller = SimpleClickerController()
 ```
 
 ### Simple Clicker - MVVM
