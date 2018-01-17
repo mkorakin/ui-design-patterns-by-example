@@ -30,7 +30,7 @@ fun setCount(count: Int)
 ```
 
 The same [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt)
-implementation is shared in all the examples. Later we may consider adding features to the model such as persistency to remember the count when the app is reopened, adding server support to allow changing the same count from different devices, and so on.
+implementation is shared in all the examples. Later we may consider adding features to the model such as persistency to database, server support and so on.
 
 # Examples
 
@@ -164,8 +164,7 @@ binding.controller = vm
 In MVP the Presenter is aware of the View, and presents on it a reflection of the Model.
 
 In the clicker example, the [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt) 
-can be bound to a [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt)
-. The Model is observed for presenting it on the View:
+can be bound to a [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt). The Model is observed for presenting it on the View:
 ```kotlin
 fun bind(view: ClickerView) {
     model.count.subscribe(view::displayCount)
@@ -236,7 +235,7 @@ As a Presenter holds a reference to the View, it can access its state.
 In Clicker Editor we want a clicker that uses the same text box to allow editing the counter value, and for showing the count. The UI shouldn't show count updates while it is being edited.
 
 To implement this, in [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
-[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) state to prevent presenting Model.count updates while the view is in editing mode:
+[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) before calling displayCount:
 ```kotlin
 model.count
     .filter({ !view.isEditing() })
