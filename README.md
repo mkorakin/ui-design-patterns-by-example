@@ -76,6 +76,15 @@ fun incrementCount() {
 ```
 
 To reflect the Model's state, the View binds to it directly.
+This is done in [SimpleClickerMvcActivity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerMvcActivity.kt):
+```kotlin
+val binding = DataBindingUtil.setContentView<SimpleClickerMvcBinding>(this, R.layout.simple_clicker_mvc)
+  
+binding.controller = SimpleClickerController()
+App.model.count.subscribe({ count -> 
+        binding.simpleClickerButton.text = count.toString() 
+    })
+```
 
 ### Simple Clicker - MVVM
 ```
