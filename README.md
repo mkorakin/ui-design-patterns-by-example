@@ -132,7 +132,8 @@ we bind the [View](/app/src/main/res/layout/simple_clicker_mvvm.xml) to the [Vie
 ```kotlin
 val binding = DataBindingUtil.setContentView<SimpleClickerMvvmBinding>(this, R.layout.simple_clicker_mvvm)
 var vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
-
+  
+// The same vm implements both interfaces.
 binding.vm = vm
 binding.controller = vm
 ```
