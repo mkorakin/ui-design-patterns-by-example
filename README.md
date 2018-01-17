@@ -127,7 +127,15 @@ The View Model observes the Model and modifies its state accordingly:
 ```kotlin
 model.count.subscribe(count::set)
 ```
+In [SimpleClickerMvvmActivity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerMvvmActivity.kt) 
+we bind the [View](/app/src/main/res/layout/simple_clicker_mvvm.xml) to the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt):
+```kotlin
+val binding = DataBindingUtil.setContentView<SimpleClickerMvvmBinding>(this, R.layout.simple_clicker_mvvm)
+var vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
 
+binding.vm = vm
+binding.controller = vm
+```
 ### Simple Clicker - MVP
 ```
 ┌───────────────────────────────────────────────┐
