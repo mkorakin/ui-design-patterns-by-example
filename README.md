@@ -76,7 +76,7 @@ fun incrementCount() {
 ```
 
 To reflect the Model's state, the [View](/app/src/main/res/layout/simple_clicker_mvc.xml) binds to it directly.
-This is done in [SimpleClickerMvcActivity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerMvcActivity.kt):
+This is done in the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerMvcActivity.kt):
 ```kotlin
 val binding = DataBindingUtil.setContentView<SimpleClickerMvcBinding>(this, R.layout.simple_clicker_mvc)
   
@@ -127,7 +127,7 @@ The View Model observes the Model and modifies its state accordingly:
 ```kotlin
 model.count.subscribe(count::set)
 ```
-In [SimpleClickerMvvmActivity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerMvvmActivity.kt) 
+In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerMvvmActivity.kt) 
 we bind the [View](/app/src/main/res/layout/simple_clicker_mvvm.xml) to the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt):
 ```kotlin
 val binding = DataBindingUtil.setContentView<SimpleClickerMvvmBinding>(this, R.layout.simple_clicker_mvvm)
@@ -167,7 +167,7 @@ observes the Model and presents it on the View:
 ```kotlin
 model.count.subscribe(view::displayCount)
 ```
-In [SimpleClickerMvpActivity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerMvpActivity.kt) 
+In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerMvpActivity.kt) 
 we implent the [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt)
 interface:
 ```kotlin
@@ -188,13 +188,23 @@ A View Model allows us to maintain a view state that is decoupled from the Model
 
 In Two Thumbs Clicker we want to display two buttons, each showing both the global count and their own count.   
   
-To implement this, each [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/StatefulClickerViewModel.kt) 
-maintains a separate count. Two View Models are created, each bound to a button. When asked to increment count, the View Model modifies both its own and the application's model state:
+To implement this, we use a [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/StatefulClickerViewModel.kt) 
+that maintains a local count in addition to observing the model's:
 ```kotlin
+val localCount = ObservableField(0)
+val globalCount = ObservableField<Int>()
+  
 fun incrementCount() {
     model.incrementCount()
     localCount.set(localCount.get()?.plus(1))
 }
+```
+Two View Models are created, each bound to a button in the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/TwoThumbsClickerActivity.kt):
+```kotlin
+val binding = DataBindingUtil.setContentView<TwoThumbsClickerMvvmBinding>(this, R.layout.two_thumbs_clicker_mvvm)
+  
+binding.vmA = ViewModelProviders.of(this).get("clickerA", StatefulClickerViewModel::class.java)
+binding.vmB = ViewModelProviders.of(this).get("clickerB", StatefulClickerViewModel::class.java)
 ```
 
 ## Long-Press Clicker - MVC
