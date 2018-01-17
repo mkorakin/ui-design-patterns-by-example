@@ -29,7 +29,7 @@ fun incrementCount()
 fun setCount(count: Int)
 ```
 
-The same [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt).
+The same [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt)
 implementation is shared in all the examples. Later we may consider adding features to the model such as persistency to remember the count when the app is reopened, adding server support to allow changing the same count from different devices, and so on.
 
 # Examples
