@@ -186,7 +186,7 @@ binding.controller = presenter
 ## Two Thumbs Clicker - MVVM
 A View Model allows us to maintain a view state that is decoupled from the Model. 
 
-In Two Thumbs Clicker we want to display two buttons, each showing both the global count and their own count.   
+In Two Thumbs Clicker we want to display two buttons, each counting its own clicks.  
   
 To implement this, we use a [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/StatefulClickerViewModel.kt) 
 that maintains a local count in addition to observing the model's:
