@@ -208,7 +208,7 @@ binding.vmB = ViewModelProviders.of(this).get("clickerB", StatefulClickerViewMod
 ```
 
 ## Long-Press Clicker - MVC
-A Controller can encapsulate control logic, separating it from presentation logic.
+A Controller encapsulates control logic, separating it from presentation and model logic.
 
 In Long-Press Clicker we want a button that can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
 
@@ -229,10 +229,10 @@ fun onPress() {
 ## Clicker Editor - MVP
 As a Presenter holds a reference to the View, it can access its state.
 
-In Clicker Editor we want a clicker that uses the same text box to allow editing of the global counter value, and to show the count. The count is auto-incremented every second, and the UI shouldn't update while it is being edited.
+In Clicker Editor we want a clicker that uses the same text box to allow editing the counter value, and for showing the count. The UI shouldn't show count updates while it is being edited.
 
-To implement this,in [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
-[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) state to prevent presenting Model.count updates while the user is editing:
+To implement this, in [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
+[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) state to prevent presenting Model.count updates while the view is in editing mode:
 ```kotlin
 model.count
     .filter({ !view.isEditing() })
