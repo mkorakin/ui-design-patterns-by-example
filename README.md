@@ -112,16 +112,13 @@ App.model.count.subscribe({ count ->
 ```
 In MVVM the View refelects the state of the View Model.
 
-In the clicker example, the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt) exposes:  
-**Controls for modifying the state**
+In the clicker example, the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt) exposes a count state and the controls for modifying it:  
 ```kotlin
+val count: ObservableField<Int>
+
 fun incrementCount() {
     model.incrementCount()
 }
-```
-**The state to be reflected by the View**
-```kotlin
-val count: ObservableField<Int>
 ```
 The View Model observes the Model and modifies its state accordingly:
 ```kotlin
