@@ -75,7 +75,7 @@ fun incrementCount() {
 }
 ```
 
-To reflect the Model's state, the View binds to it directly.
+To reflect the Model's state, the [View](/app/src/main/res/layout/simple_clicker_mvc.xml) binds to it directly.
 This is done in [SimpleClickerMvcActivity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerMvcActivity.kt):
 ```kotlin
 val binding = DataBindingUtil.setContentView<SimpleClickerMvcBinding>(this, R.layout.simple_clicker_mvc)
@@ -167,8 +167,22 @@ observes the Model and presents it on the View:
 ```kotlin
 model.count.subscribe(view::displayCount)
 ```
-It also exposes the same ```incrementCount``` control exposed by MVVM and MVC.
+In [SimpleClickerMvpActivity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerMvpActivity.kt) 
+we implent the [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt)
+interface:
+```kotlin
+binding = DataBindingUtil.setContentView(this, R.layout.simple_clicker_mvp)
 
+presenter.bind(object : ClickerView {
+    override fun displayCount(count: Int) {
+        binding.simpleClickerButton.text = count.toString()
+    }
+})
+```
+and bind the [View](/app/src/main/res/layout/simple_clicker_mvp.xml) to the controls implemented by the [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt):
+```kotlin
+binding.controller = presenter
+```
 ## Two Thumbs Clicker - MVVM
 A View Model allows us to maintain a view state that is decoupled from the Model. 
 
