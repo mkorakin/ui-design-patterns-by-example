@@ -20,7 +20,7 @@ Any suggestions for more examples, or different implementations/interpretations 
 
 The Model represents a global state of the application. 
 
-In the clicker app, the same [Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/Model.kt) is used by all the examples. The model provides an interface for observing and for modifying its state:
+For the clicker [Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/Model.kt) we provide an interface for observing and for modifying the global click state:
 
 ```kotlin
 val count : Observable<Int>
@@ -29,8 +29,8 @@ fun incrementCount()
 fun setCount(count: Int)
 ```
 
-At first we may want to implement the Model using a simple [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt).
-This can later be modified without changes to the rest of the code (for example - adding persistency to remember the count when the app is reopened, adding server support to allow changing the same count from different devices, and so on.).
+The same [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt).
+implementation is shared in all the examples. Later we may consider adding features to the model such as persistency to remember the count when the app is reopened, adding server support to allow changing the same count from different devices, and so on.
 
 # Examples
 
