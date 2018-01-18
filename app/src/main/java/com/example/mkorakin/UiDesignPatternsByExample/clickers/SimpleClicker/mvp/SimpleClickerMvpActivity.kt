@@ -8,7 +8,7 @@ import com.example.mkorakin.UiDesignPatternsByExample.databinding.SimpleClickerM
 
 class SimpleClickerMvpActivity : AppCompatActivity() {
 
-    private var presenter: SimpleClickerPresenter = SimpleClickerPresenter()
+    private lateinit var presenter: SimpleClickerPresenter
 
     private lateinit var binding: SimpleClickerMvpBinding
 
@@ -16,7 +16,7 @@ class SimpleClickerMvpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.simple_clicker_mvp)
 
-        presenter.bind(object : ClickerView {
+        presenter = SimpleClickerPresenter(object : ClickerView {
 
             override fun displayCount(count: Int) {
                 binding.simpleClickerButton.text = count.toString()

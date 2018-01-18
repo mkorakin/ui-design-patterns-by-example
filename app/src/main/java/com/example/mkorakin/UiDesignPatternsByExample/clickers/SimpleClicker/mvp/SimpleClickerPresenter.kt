@@ -5,20 +5,15 @@ import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc
 import io.reactivex.disposables.Disposable
 
 /**
- * A Presenter presenting the Model on a [ClickerView].
+ * A Presenter displaying clicks on the attached View.
  */
-internal class SimpleClickerPresenter : ClickerController {
+internal class SimpleClickerPresenter(view: ClickerView) : ClickerController {
 
     private val model = App.model
-    private var subscription: Disposable? = null
+    private var subscription: Disposable
 
-
-    /**
-     * Bind a view to be presented on.
-     * Observes changes in the Model and presents them on the View.
-     */
-    fun bind(view: ClickerView) {
-        unbind()
+    init {
+        // Observed changes in the Model count are presented on the View.
         subscription = model.count.subscribe(view::displayCount)
     }
 
@@ -33,6 +28,6 @@ internal class SimpleClickerPresenter : ClickerController {
      * Unbind the View from this Presenter.
      */
     fun unbind() {
-        subscription?.dispose()
+        subscription.dispose()
     }
 }
