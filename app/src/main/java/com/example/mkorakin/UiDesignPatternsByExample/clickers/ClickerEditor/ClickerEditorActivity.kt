@@ -13,7 +13,7 @@ import com.example.mkorakin.UiDesignPatternsByExample.databinding.ClickerEditorM
 
 class ClickerEditorActivity : AppCompatActivity() {
 
-    private val presenter = ClickerEditorPresenter()
+    private lateinit var presenter: ClickerEditorPresenter
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +32,7 @@ class ClickerEditorActivity : AppCompatActivity() {
             }
         }
 
-        presenter.bind(object : ClickerEditorView {
+        presenter = ClickerEditorPresenter(object : ClickerEditorView {
             override fun isEditing(): Boolean {
                 return binding.count.isFocused
             }

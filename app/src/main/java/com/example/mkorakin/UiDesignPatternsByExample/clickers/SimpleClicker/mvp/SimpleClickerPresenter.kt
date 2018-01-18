@@ -5,7 +5,7 @@ import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc
 import io.reactivex.disposables.Disposable
 
 /**
- * A Presenter displaying clicks on the attached View.
+ * A Presenter displaying clicks on the attached [ClickerView].
  */
 internal class SimpleClickerPresenter(view: ClickerView) : ClickerController {
 

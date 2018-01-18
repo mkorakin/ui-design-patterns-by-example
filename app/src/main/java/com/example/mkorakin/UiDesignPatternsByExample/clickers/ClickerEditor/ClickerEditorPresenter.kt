@@ -8,27 +8,22 @@ import java.util.concurrent.TimeUnit
 
 /**
  * A Presenter presenting changes in the clicker count on a bound [ClickerEditorView].
+ * Changes won't be presented while the View is in editing mode.
  */
-internal class ClickerEditorPresenter {
+internal class ClickerEditorPresenter(view: ClickerEditorView) {
 
     private val model = App.model
     private var subscriptions: CompositeDisposable = CompositeDisposable()
     private var timer = Observable.interval(1, TimeUnit.SECONDS)
 
-    /**
-     * Bind a view to be presented on.
-     * Changes in the model won't be presented while [ClickerEditorView.isEditing]
-     * is true.
-     */
-    fun bind(view: ClickerEditorView) {
-        unbind()
-
+    init {
         subscriptions.add(
                 model.count
                         // Querying the View to check if isEditing before presenting the count on it.
                         .filter({ !view.isEditing() })
                         .subscribe(view::displayCount))
 
+        // For simulating external changes in the count:
         // Starting a timer that auto-"clicks" the Model every second.
         subscriptions.add(
                 timer
@@ -49,6 +44,5 @@ internal class ClickerEditorPresenter {
      */
     fun unbind() {
         subscriptions.dispose()
-        subscriptions = CompositeDisposable()
     }
 }
