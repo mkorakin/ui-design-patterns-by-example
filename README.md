@@ -258,3 +258,17 @@ vm.count.observe(this, Observer<Int> {
     count ->  title = count?.toString()
 })
 ```
+As multiple Views can share the same View Model, we may want to make sure that any heavy work (db / network etc.) is done only when needed.
+For this in [OnDemandClickerViewModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ToolbarClicker/OnDemandClickerViewModel.kt)
+we’ll use:
+```kotlin
+viewModelCount = model.count
+  
+        // Cache and share the observable with all subscribers.
+        .replay(1).refCount()
+  
+        // [RxLiveDataAdapter] will subscribe to the rx [Observable] only
+        // when [LiveData] is subscribed to by the Views.
+        .to({ rx -> RxLiveDataAdapter(rx) })
+
+```
