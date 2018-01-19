@@ -258,7 +258,7 @@ vm.count.observe(this, Observer<Int> {
     count ->  title = count?.toString()
 })
 ```
-As multiple Views can share the same View Model, we may want to make sure that any heavy work (db / network etc.) is done only when needed.
+As multiple Views can share the same View Model, some may suscribe to only a subset of the model (e.g. only to localCount). We may want to make sure that any heavy work (db / network etc.) is done only when needed.
 For this in [OnDemandClickerViewModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ToolbarClicker/OnDemandClickerViewModel.kt)
 we’ll use [rx sharing](http://reactivex.io/documentation/operators.html#connectable) 
 and [RxLiveDataAdapter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/infrastructure/RxLiveDataAdapter.kt):
