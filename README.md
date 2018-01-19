@@ -2,7 +2,9 @@
 
 **The same Simple Clicker is implemented in 3 design patterns: MVC, MVVM, and MVP.**
 
-**Then more features are added to highlight traits of each pattern.**
+**Then more features are added to highlight traits of each pattern.**  
+  
+See brief descriptions below and full Android implementation in the [repo](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers).
   
 - [The Model](#the-model)
 - [Examples](#examples)
