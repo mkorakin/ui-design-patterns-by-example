@@ -10,10 +10,10 @@
     + [MVC](#simple-clicker---mvc)
     + [MVVM](#simple-clicker---mvvm)
     + [MVP](#simple-clicker---mvp)
-  * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm)
-  * [Long-Press Clicker - MVC](#long-press-clicker---mvc)
-  * [Clicker Editor - MVP](#clicker-editor---mvp)
-  * [Toolbar Clicker - MVVM](#toolbar-clicker---mvvm)
+  * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm): View Model state
+  * [Long-Press Clicker - MVC](#long-press-clicker---mvc): Specialized Controller
+  * [Clicker Editor - MVP](#clicker-editor---mvp): View state
+  * [Toolbar Clicker - MVVM](#toolbar-clicker---mvvm): View Model sharing
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
 
@@ -186,6 +186,7 @@ and bind the [View](/app/src/main/res/layout/simple_clicker_mvp.xml) to the cont
 binding.controller = presenter
 ```
 ## Two Thumbs Clicker - MVVM
+**View Model state**  
 A View Model allows us to maintain a view state that is decoupled from the Model. 
 
 In Two Thumbs Clicker we want to display two buttons, each counting its own clicks.  
@@ -210,6 +211,7 @@ binding.vmB = ViewModelProviders.of(this).get("clickerB", StatefulClickerViewMod
 ```
 
 ## Long-Press Clicker - MVC
+**Specialized Controller**  
 A Controller encapsulates control logic, separating it from presentation and model logic.
 
 In Long-Press Clicker we want a button that can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
@@ -229,6 +231,7 @@ fun onPress() {
 ```
 
 ## Clicker Editor - MVP
+**View state**  
 As a Presenter holds a reference to the View, it can access its state.
 
 In Clicker Editor we want a clicker that uses the same text box to allow editing the counter value, and for showing the count. The UI shouldn't show count updates while it is being edited.
@@ -242,6 +245,7 @@ model.count
 ```
 
 ## Toolbar Clicker - MVVM
+**View Model sharing**  
 Multiple views can share the same View Model instance.
 
 In toolbar clicker we want the clicks to be displayed both on a button and on the screen's toolbar.
