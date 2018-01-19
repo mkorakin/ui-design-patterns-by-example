@@ -1,9 +1,9 @@
 package com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvvm
 
-import android.databinding.ObservableField
+import android.arch.lifecycle.LiveData
 
 interface ClickerViewModel {
 
-    val count: ObservableField<Int>
+    val count: LiveData<Int>
 
 }

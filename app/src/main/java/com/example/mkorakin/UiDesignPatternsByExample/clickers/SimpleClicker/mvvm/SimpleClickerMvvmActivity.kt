@@ -12,8 +12,9 @@ class SimpleClickerMvvmActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<SimpleClickerMvvmBinding>(this, R.layout.simple_clicker_mvvm)
+        binding.setLifecycleOwner(this)
 
-        var vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
+        val vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
 
         binding.vm = vm
         binding.controller = vm

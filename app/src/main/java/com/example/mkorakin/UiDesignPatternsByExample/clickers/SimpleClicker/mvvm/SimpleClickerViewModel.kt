@@ -1,7 +1,7 @@
 package com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvvm
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.databinding.ObservableField
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
 import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.ClickerController
 import io.reactivex.disposables.Disposable
@@ -17,7 +17,7 @@ internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel, ClickerCo
     /**
      * Click count.
      */
-    override val count: ObservableField<Int> = ObservableField()
+    override val count: MutableLiveData<Int> = MutableLiveData()
 
     /**
      * Increment the click count.
@@ -30,7 +30,7 @@ internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel, ClickerCo
      * Observe the [Model]'s state and modify the local state accordingly.
      */
     init {
-        subscription = model.count.subscribe(count::set)
+        subscription = model.count.subscribe(count::setValue)
     }
 
 
