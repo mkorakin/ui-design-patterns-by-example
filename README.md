@@ -260,7 +260,8 @@ vm.count.observe(this, Observer<Int> {
 ```
 As multiple Views can share the same View Model, we may want to make sure that any heavy work (db / network etc.) is done only when needed.
 For this in [OnDemandClickerViewModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ToolbarClicker/OnDemandClickerViewModel.kt)
-we’ll use:
+we’ll use [rx sharing](http://reactivex.io/documentation/operators.html#connectable) 
+and [RxLiveDataAdapter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/infrastructure/RxLiveDataAdapter.kt):
 ```kotlin
 viewModelCount = model.count
   
