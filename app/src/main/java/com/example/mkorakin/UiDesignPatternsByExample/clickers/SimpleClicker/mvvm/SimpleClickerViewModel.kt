@@ -20,19 +20,18 @@ internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel, ClickerCo
     override val count: MutableLiveData<Int> = MutableLiveData()
 
     /**
-     * Increment the click count.
-     */
-    override fun incrementCount() {
-        model.incrementCount()
-    }
-
-    /**
      * Observe the [Model]'s state and modify the local state accordingly.
      */
     init {
         subscription = model.count.subscribe(count::setValue)
     }
 
+    /**
+     * Increment the click count.
+     */
+    override fun incrementCount() {
+        model.incrementCount()
+    }
 
     /**
      * Stop observing the Model.
