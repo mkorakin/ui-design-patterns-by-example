@@ -13,6 +13,7 @@
   * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm)
   * [Long-Press Clicker - MVC](#long-press-clicker---mvc)
   * [Clicker Editor - MVP](#clicker-editor---mvp)
+  * [Toolbar Clicker - MVVM](#toolbar-clicker---mvvm)
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
 
@@ -238,4 +239,22 @@ To implement this, in [ClickerEditorPresenter](/app/src/main/java/com/example/mk
 model.count
     .filter({ !view.isEditing() })
     .subscribe(view::displayCount))
+```
+
+## Toolbar Clicker - MVVM
+Multiple views can share the same View Model instance.
+
+In toolbar clicker we want the clicks to be displayed both on a button and on the screen's toolbar.
+  
+To implement this, in the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ToolbarClicker/ToolbarClickerActivity.kt)
+we bind the same [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/ClickerViewModel.kt)
+both to the button and to the activity's title:
+```kotlin
+// Bind to button view
+binding.vm = vm
+  
+// Bind to activity title
+vm.count.observe(this, Observer<Int> {
+    count ->  title = count?.toString()
+})
 ```
