@@ -15,16 +15,8 @@ class MainActivity : AppCompatActivity(), MenuItem.Controller {
         binding.menuList.adapter = MenuAdapter(
                 this,
                 R.layout.menu_item,
-                arrayOf(
-                        MenuItem.SIMPLE_CLICKER_MVC,
-                        MenuItem.SIMPLE_CLICKER_MVVM,
-                        MenuItem.SIMPLE_CLICKER_MVP,
-                        MenuItem.LONG_PRESS_CLICKER_MVC,
-                        MenuItem.TWO_THUMBS_CLICKER_MVVM,
-                        MenuItem.CLICKER_EDITOR_MVP
-                ),
+                MenuItem.values(),
                 this)
-
     }
 
     override fun select(item: MenuItem) {
