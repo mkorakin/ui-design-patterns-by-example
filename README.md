@@ -34,7 +34,7 @@ fun setCount(count: Int)
 ```
 
 The same [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt)
-implementation is shared in all the examples. Later we may consider adding features to the model such as persistency to database, server support and so on.
+implementation is shared in all the examples. Later we may want to add features to the model such as persistency to database, server support and so on.
 
 # Examples
 
