@@ -70,7 +70,7 @@ The exact same Simple Clicker (a button that displays a count of the total click
 │                                               │
 └───────────────────────────────────────────────┘
 ```
-In MVC The Controller provides the View with the api to modify the Model.
+In MVC the View reflects the Model directly, and uses the Controller for modifying it.
 
 In the clicker example, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt) exposes:
 ```kotlin
