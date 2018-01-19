@@ -173,7 +173,7 @@ is constructed with a [ClickerView](/app/src/main/java/com/example/mkorakin/UiDe
 model.count.subscribe(view::displayCount)
 ```
 In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerMvpActivity.kt) 
-we implent the [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt)
+we implement the [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt)
 interface:
 ```kotlin
 binding = DataBindingUtil.setContentView(this, R.layout.simple_clicker_mvp)
