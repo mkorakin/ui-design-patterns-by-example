@@ -117,16 +117,15 @@ In MVVM the View refelects the state of the View Model.
 
 In the clicker example, the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt) exposes a count state and the controls for modifying it:  
 ```kotlin
-val viewModelCount: LiveData<Int>
+val viewModelCount: ObservableField<Int>
 
 fun incrementCount() {
     model.incrementCount()
 }
 ```
-The View Model observes the Model and modifies its own state accordingly. 
-In Simple Clicker we bind the model directly to the exposed count:
+The View Model observes the Model and modifies its state accordingly:
 ```kotlin
-viewModelCount = RxToLiveDataAdapter(model.count)
+model.count.subscribe(viewModelCount::set)
 ```
 In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerMvvmActivity.kt) 
 we bind the [View](/app/src/main/res/layout/simple_clicker_mvvm.xml) to the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt):
