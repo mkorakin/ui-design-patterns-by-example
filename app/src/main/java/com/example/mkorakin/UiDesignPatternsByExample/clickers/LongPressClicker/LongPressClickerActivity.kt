@@ -7,21 +7,20 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MotionEvent
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
 import com.example.mkorakin.UiDesignPatternsByExample.R
-import com.example.mkorakin.UiDesignPatternsByExample.databinding.LongPressClickerMvcBinding
+import com.example.mkorakin.UiDesignPatternsByExample.databinding.GestureClickerMvcBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
 class LongPressClickerActivity : AppCompatActivity() {
 
-    private lateinit var subscription: Disposable
+    private lateinit var modelSubscription: Disposable
+
+    private val controller = LongPressClickerController()
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<LongPressClickerMvcBinding>(this, R.layout.long_press_clicker_mvc)
-
-        val controller = LongPressClickerController()
-        binding.controller = controller
+        val binding = DataBindingUtil.setContentView<GestureClickerMvcBinding>(this, R.layout.gesture_clicker_mvc)
 
         binding.clickerButton.setOnTouchListener({ _, event ->
             when (event?.action) {
@@ -31,14 +30,14 @@ class LongPressClickerActivity : AppCompatActivity() {
             false
         })
 
-        subscription = App.model
+        modelSubscription = App.model
                 .count
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ count -> binding.clickerButton.text = count.toString() })
     }
 
     override fun onDestroy() {
-        subscription.dispose()
+        modelSubscription.dispose()
         super.onDestroy()
     }
 }
