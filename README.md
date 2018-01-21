@@ -12,6 +12,7 @@ See brief descriptions below and full Android implementation in the [repo](/app/
     + [MVC](#simple-clicker---mvc)
     + [MVVM](#simple-clicker---mvvm)
     + [MVP](#simple-clicker---mvp)
+  * [Touch Gesture Clicker - MVC](#touch-gesture-clicker---mvc): Indirect model modification
   * [Long-Press Clicker - MVC](#long-press-clicker---mvc): Specialized Controller
   * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm): View Model state
   * [Toolbar Clicker - MVVM](#toolbar-clicker---mvvm): View Model sharing
@@ -206,6 +207,21 @@ presenter = SimpleClickerPresenter(object : ClickerView {
 and bind the [View](/app/src/main/res/layout/simple_clicker_mvp.xml) to the controls implemented by the [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt):
 ```kotlin
 binding.controller = presenter
+```
+## Touch Gesture Clicker - MVC
+**Indirect model modification**  
+In MVC the Controller translates View controls to Model controls.
+  
+In Touch Gesture Clicker we want a button that clicks when pressed (as opposed to when released).
+  
+To implement this, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TouchGestureClicker/TouchGestureClickerController.kt) 
+receives touch events from the view and decides when to call incrementCount:
+```kotlin
+fun onTouch(event: MotionEvent) {
+    if (event.action == MotionEvent.ACTION_DOWN) {
+        model.incrementCount()
+    }
+}
 ```
 ## Long-Press Clicker - MVC
 **Specialized Controller**  
