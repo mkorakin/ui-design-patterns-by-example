@@ -175,8 +175,20 @@ In MVP the Presenter is aware of the View, and presents on it a reflection of th
 In the clicker example, the [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerPresenter.kt) 
 is constructed with a [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt). The Model is observed for presenting it on the View:
 ```kotlin
-constructor(view: ClickerView) {
+interface ClickerView {
+    fun displayCount(count: Int)
+}
+```
+
+```kotlin
+class SimpleClickerPresenter {
+    constructor(view: ClickerView) {
         model.count.subscribe(view::displayCount)
+    }
+    
+    fun incrementCount() {
+        model.incrementCount()
+    }
 }
 ```
 In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerMvpActivity.kt) 
