@@ -314,14 +314,18 @@ with an [AnimatingClickerView](/app/src/main/java/com/example/mkorakin/UiDesignP
 ```kotlin
 interface AnimatingClickerView {
     fun animate()
+    val isAnimating: Boolean
+    
     fun displayCount(count: Int)
 }
 ```
-And animate it on clicks:
+And animate it on clicks. To disable input while animating, we query the View's state:
 ```kotlin
 fun incrementCount() {
-    model.incrementCount()
-    view.animate()
+    if (!view.isAnimating) {
+        model.incrementCount()
+        view.animate()
+    }
 }
 ```
 
