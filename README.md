@@ -319,7 +319,7 @@ interface AnimatingClickerView {
     fun displayCount(count: Int)
 }
 ```
-And animate it on clicks. To disable input while animating, we query the View's state:
+and animate it on clicks. To disable input while animating, we query the View's state:
 ```kotlin
 fun incrementCount() {
     if (!view.isAnimating) {
