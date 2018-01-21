@@ -9,15 +9,15 @@ See brief descriptions below and full Android implementation in the [repo](/app/
 - [The Model](#the-model)
 - [Examples](#examples)
   * [Simple Clicker](#simple-clicker---mvc-mvvm-mvp)
-    + [MVC](#simple-clicker---mvc)
-    + [MVVM](#simple-clicker---mvvm)
-    + [MVP](#simple-clicker---mvp)
-  * [Touch Gesture Clicker - MVC](#touch-gesture-clicker---mvc): Indirect model modification
-  * [Long-Press Clicker - MVC](#long-press-clicker---mvc): Controller state
-  * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm): View Model state
-  * [Toolbar Clicker - MVVM](#toolbar-clicker---mvvm): View Model sharing
-  * [Clicker Editor - MVP](#clicker-editor---mvp): View state
-  * [Animating Clicker - MVP](#animating-clicker---mvp): View state changes
+    + [**MVC**](#simple-clicker---mvc)
+    + [**MVVM**](#simple-clicker---mvvm)
+    + [**MVP**](#simple-clicker---mvp)  
+  * [Touch Gesture Clicker - **MVC**](#touch-gesture-clicker---mvc): Indirect model modification
+  * [Long-Press Clicker - **MVC**](#long-press-clicker---mvc): Controller state
+  * [Two Thumbs Clicker - **MVVM**](#two-thumbs-clicker---mvvm): View Model state
+  * [Toolbar Clicker - **MVVM**](#toolbar-clicker---mvvm): View Model sharing
+  * [Clicker Editor - **MVP**](#clicker-editor---mvp): View state
+  * [Animating Clicker - **MVP**](#animating-clicker---mvp): View state changes
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
 
