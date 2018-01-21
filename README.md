@@ -12,10 +12,10 @@ See brief descriptions below and full Android implementation in the [repo](/app/
     + [MVC](#simple-clicker---mvc)
     + [MVVM](#simple-clicker---mvvm)
     + [MVP](#simple-clicker---mvp)
-  * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm): View Model state
   * [Long-Press Clicker - MVC](#long-press-clicker---mvc): Specialized Controller
-  * [Clicker Editor - MVP](#clicker-editor---mvp): View state
+  * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm): View Model state
   * [Toolbar Clicker - MVVM](#toolbar-clicker---mvvm): View Model sharing
+  * [Clicker Editor - MVP](#clicker-editor---mvp): View state
   * [Animating Clicker - MVP](#animating-clicker---mvp): View state changes
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
@@ -210,6 +210,25 @@ and bind the [View](/app/src/main/res/layout/simple_clicker_mvp.xml) to the cont
 ```kotlin
 binding.controller = presenter
 ```
+## Long-Press Clicker - MVC
+**Specialized Controller**  
+A Controller encapsulates control logic, separating it from presentation and model logic.
+
+In Long-Press Clicker we want a button that can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
+
+To implement this, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/LongPressClicker/LongPressClickerController.kt) will maintain a state using timers for auto-incrementing:
+```kotlin
+fun onPress() {
+    accelerationTimer
+            .doOnNext({ autoIncrementing = true })
+            .switchMap({ accelerationStep ->
+                Observable.interval(
+                        (BASE_AUTO_INCREMENT_INTERVAL_MILLIS / (Math.pow(2.0, accelerationStep.toDouble()))).toLong(),
+                        TimeUnit.MILLISECONDS)
+            })
+            .subscribe({ model.incrementCount() })
+}
+```
 ## Two Thumbs Clicker - MVVM
 **View Model state**  
 A View Model allows us to maintain a view state that is decoupled from the Model. 
@@ -234,26 +253,6 @@ val binding = DataBindingUtil.setContentView<TwoThumbsClickerMvvmBinding>(this, 
   
 binding.vmA = ViewModelProviders.of(this).get("clickerA", StatefulClickerViewModel::class.java)
 binding.vmB = ViewModelProviders.of(this).get("clickerB", StatefulClickerViewModel::class.java)
-```
-
-## Long-Press Clicker - MVC
-**Specialized Controller**  
-A Controller encapsulates control logic, separating it from presentation and model logic.
-
-In Long-Press Clicker we want a button that can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
-
-To implement this, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/LongPressClicker/LongPressClickerController.kt) will maintain a state using timers for auto-incrementing:
-```kotlin
-fun onPress() {
-    accelerationTimer
-            .doOnNext({ autoIncrementing = true })
-            .switchMap({ accelerationStep ->
-                Observable.interval(
-                        (BASE_AUTO_INCREMENT_INTERVAL_MILLIS / (Math.pow(2.0, accelerationStep.toDouble()))).toLong(),
-                        TimeUnit.MILLISECONDS)
-            })
-            .subscribe({ model.incrementCount() })
-}
 ```
 
 ## Clicker Editor - MVP
