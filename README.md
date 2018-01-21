@@ -81,7 +81,7 @@ class SimpleClickerController {
     }
 }
 ```
-
+![Android](https://developer.android.com/images/robot-tiny.png) 
 To reflect the Model's state, the [View](/app/src/main/res/layout/simple_clicker_mvc.xml) binds to it directly.
 This is done in the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerMvcActivity.kt):
 ```kotlin
@@ -136,6 +136,7 @@ class SimpleClickerViewModel {
     }
 }
 ```
+![Android](https://developer.android.com/images/robot-tiny.png) 
 In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerMvvmActivity.kt) 
 we bind the [View](/app/src/main/res/layout/simple_clicker_mvvm.xml) to the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt):
 ```kotlin
@@ -191,6 +192,7 @@ class SimpleClickerPresenter {
     }
 }
 ```
+![Android](https://developer.android.com/images/robot-tiny.png) 
 In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/SimpleClickerMvpActivity.kt) 
 we implement the [ClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvp/ClickerView.kt)
 interface:
@@ -224,6 +226,7 @@ fun incrementCount() {
     localCount.set(localCount.get()?.plus(1))
 }
 ```
+![Android](https://developer.android.com/images/robot-tiny.png) 
 Two View Models are created, each bound to a button in the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/TwoThumbsClickerActivity.kt):
 ```kotlin
 val binding = DataBindingUtil.setContentView<TwoThumbsClickerMvvmBinding>(this, R.layout.two_thumbs_clicker_mvvm)
