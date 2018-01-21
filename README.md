@@ -13,7 +13,7 @@ See brief descriptions below and full Android implementation in the [repo](/app/
     + [MVVM](#simple-clicker---mvvm)
     + [MVP](#simple-clicker---mvp)
   * [Touch Gesture Clicker - MVC](#touch-gesture-clicker---mvc): Indirect model modification
-  * [Long-Press Clicker - MVC](#long-press-clicker---mvc): Specialized Controller
+  * [Long-Press Clicker - MVC](#long-press-clicker---mvc): Controller state
   * [Two Thumbs Clicker - MVVM](#two-thumbs-clicker---mvvm): View Model state
   * [Toolbar Clicker - MVVM](#toolbar-clicker---mvvm): View Model sharing
   * [Clicker Editor - MVP](#clicker-editor---mvp): View state
@@ -224,22 +224,22 @@ fun onTouch(event: MotionEvent) {
 }
 ```
 ## Long-Press Clicker - MVC
-**Specialized Controller**  
-A Controller encapsulates control logic, separating it from presentation and model logic.
+**Controller state**  
+A Controller can maintain a control state.  
+  
+In Long-Press Clicker we want a button that only clicks when long pressed.
 
-In Long-Press Clicker we want a button that can be long pressed to automatically generate clicks. The longer pressed, the faster clicks will be generated.
-
-To implement this, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/LongPressClicker/LongPressClickerController.kt) will maintain a state using timers for auto-incrementing:
+To implement this, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/LongPressClicker/LongPressClickerController.kt) will maintain a state using a timer:
 ```kotlin
-fun onPress() {
-    accelerationTimer
-            .doOnNext({ autoIncrementing = true })
-            .switchMap({ accelerationStep ->
-                Observable.interval(
-                        (BASE_AUTO_INCREMENT_INTERVAL_MILLIS / (Math.pow(2.0, accelerationStep.toDouble()))).toLong(),
-                        TimeUnit.MILLISECONDS)
-            })
-            .subscribe({ model.incrementCount() })
+fun onTouch(event: MotionEvent) {
+    when (event.action) {
+        MotionEvent.ACTION_DOWN -> {
+            timer = Observable
+                    .timer(LONG_PRESS_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)
+                    .subscribe({ model.incrementCount() })
+        }
+        MotionEvent.ACTION_UP -> timer?.dispose()
+    }
 }
 ```
 ## Two Thumbs Clicker - MVVM
