@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.MotionEvent
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
 import com.example.mkorakin.UiDesignPatternsByExample.R
 import com.example.mkorakin.UiDesignPatternsByExample.databinding.GestureClickerMvcBinding
@@ -22,13 +21,7 @@ class LongPressClickerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<GestureClickerMvcBinding>(this, R.layout.gesture_clicker_mvc)
 
-        binding.clickerButton.setOnTouchListener({ _, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> controller.onPress()
-                MotionEvent.ACTION_UP -> controller.onRelease()
-            }
-            false
-        })
+        binding.clickerButton.setOnTouchListener(controller)
 
         modelSubscription = App.model
                 .count
@@ -38,6 +31,7 @@ class LongPressClickerActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         modelSubscription.dispose()
+        controller.dispose()
         super.onDestroy()
     }
 }
