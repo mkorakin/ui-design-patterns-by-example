@@ -254,21 +254,6 @@ val binding = DataBindingUtil.setContentView<TwoThumbsClickerMvvmBinding>(this, 
 binding.vmA = ViewModelProviders.of(this).get("clickerA", StatefulClickerViewModel::class.java)
 binding.vmB = ViewModelProviders.of(this).get("clickerB", StatefulClickerViewModel::class.java)
 ```
-
-## Clicker Editor - MVP
-**View state**  
-As a Presenter holds a reference to the View, it can access its state.
-
-In Clicker Editor we want a clicker that uses the same text box to allow editing the counter value, and for showing the count. The UI shouldn't show count updates while it is being edited.
-
-To implement this, in [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
-[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) before calling displayCount:
-```kotlin
-model.count
-    .filter({ !view.isEditing() })
-    .subscribe(view::displayCount))
-```
-
 ## Toolbar Clicker - MVVM
 **View Model sharing**  
 Multiple views can share the same View Model instance.
@@ -301,6 +286,19 @@ viewModelCount = model.count
         // when [LiveData] is subscribed to by the Views.
         .to({ rx -> RxLiveDataAdapter(rx) })
 
+```
+## Clicker Editor - MVP
+**View state**  
+As a Presenter holds a reference to the View, it can access its state.
+
+In Clicker Editor we want a clicker that uses the same text box to allow editing the counter value, and for showing the count. The UI shouldn't show count updates while it is being edited.
+
+To implement this, in [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
+[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) before calling displayCount:
+```kotlin
+model.count
+    .filter({ !view.isEditing() })
+    .subscribe(view::displayCount))
 ```
 ## Animating Clicker - MVP
 **View state changes**  
