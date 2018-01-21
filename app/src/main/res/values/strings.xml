@@ -8,6 +8,7 @@
     <string name="menu_clicker_editor_mvp">Clicker Editor - MVP</string>
     <string name="menu_two_thumbs_clicker_mvvm">Two Thumbs Clicker - MVVM</string>
     <string name="menu_toolbar_clicker_mvvm">Toolbar Clicker - MVVM</string>
+    <string name="menu_animating_clicker_mvp">Animating Clicker - MVP</string>
 
     <string name="set_count">Set Count</string>
 

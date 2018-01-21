@@ -23,6 +23,7 @@
         <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.ClickerEditor.ClickerEditorActivity"/>
         <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker.TwoThumbsClickerActivity"/>
         <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.ToolbarClicker.ToolbarClickerActivity"/>
+        <activity android:name="com.example.mkorakin.UiDesignPatternsByExample.clickers.AnimatingClicker.AnimatingClickerActivity"/>
     </application>
 
 </manifest>
