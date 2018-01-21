@@ -16,6 +16,7 @@ See brief descriptions below and full Android implementation in the [repo](/app/
   * [Long-Press Clicker - MVC](#long-press-clicker---mvc): Specialized Controller
   * [Clicker Editor - MVP](#clicker-editor---mvp): View state
   * [Toolbar Clicker - MVVM](#toolbar-clicker---mvvm): View Model sharing
+  * [Animating Clicker - MVP](#animating-clicker---mvp): View state changes
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
 
@@ -301,4 +302,35 @@ viewModelCount = model.count
         // when [LiveData] is subscribed to by the Views.
         .to({ rx -> RxLiveDataAdapter(rx) })
 
+```
+## Animating Clicker - MVP
+**View state changes**  
+In MVP the Presenter triggers changes to the state of the View.  
+  
+In Animating Clicker we want a clicker that animates on each click.  
+  
+To implement this we’ll construct a [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/AnimatingClicker/AnimatingClickerPresenter.kt) 
+with an [AnimatingClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/AnimatingClicker/AnimatingClickerView.kt):
+```kotlin
+interface AnimatingClickerView {
+    fun animate()
+    fun displayCount(count: Int)
+}
+```
+And animate it on clicks:
+```kotlin
+fun incrementCount() {
+    model.incrementCount()
+    view.animate()
+}
+```
+
+Animation implementation will be done in the [View](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/AnimatingClicker/AnimatingClickerActivity.kt):
+```kotlin
+override fun animate() {
+    binding.simpleClickerButton.animate()
+        .withStartAction({binding.simpleClickerButton.isEnabled = false})
+        .withEndAction({binding.simpleClickerButton.isEnabled = true})
+        .rotationBy(360f)
+}
 ```
