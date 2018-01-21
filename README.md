@@ -332,9 +332,6 @@ fun incrementCount() {
 Animation implementation will be done in the [View](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/AnimatingClicker/AnimatingClickerActivity.kt):
 ```kotlin
 override fun animate() {
-    binding.simpleClickerButton.animate()
-        .withStartAction({binding.simpleClickerButton.isEnabled = false})
-        .withEndAction({binding.simpleClickerButton.isEnabled = true})
-        .rotationBy(360f)
+    binding.simpleClickerButton.animate().rotationBy(360f)
 }
 ```
