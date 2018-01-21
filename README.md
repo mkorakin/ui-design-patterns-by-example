@@ -210,7 +210,7 @@ binding.controller = presenter
 ```
 ## Touch Gesture Clicker - MVC
 **Indirect model modification**  
-In MVC the Controller translates View controls to Model controls.
+In MVC the Controller modifies the model in reposnse to UI events.  
   
 In Touch Gesture Clicker we want a button that clicks when pressed (as opposed to when released).
   
