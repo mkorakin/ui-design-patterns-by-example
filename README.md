@@ -72,10 +72,13 @@ The exact same Simple Clicker (a button that displays a count of the total click
 ```
 In MVC the View reflects the Model directly, and uses the Controller for modifying it.
 
-In the clicker example, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt) exposes:
+In the clicker example, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt) 
+provides incrementCount to control the Model:
 ```kotlin
-fun incrementCount() {
-    model.incrementCount()
+class SimpleClickerController {
+    fun incrementCount() {
+        model.incrementCount()
+    }
 }
 ```
 
@@ -119,17 +122,19 @@ binding.controller = SimpleClickerController()
 ```
 In MVVM the View refelects the state of the View Model.
 
-In the clicker example, the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt) exposes a count state and the controls for modifying it:  
+In the clicker example, the View Model exposes a count state and the controls for modifying it. To manage its state [SimpleClickerViewModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt)  increments the Model's count and observes changes in the Model:  
 ```kotlin
-val viewModelCount: ObservableField<Int>
+class SimpleClickerViewModel {
+    val viewModelCount: MutableLiveData<Int>
 
-fun incrementCount() {
-    model.incrementCount()
+    fun incrementCount() {
+        model.incrementCount()
+    }
+    
+    init {
+        model.count.subscribe(viewModelCount::set)
+    }
 }
-```
-The View Model observes the Model and modifies its state accordingly:
-```kotlin
-model.count.subscribe(viewModelCount::set)
 ```
 In the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerMvvmActivity.kt) 
 we bind the [View](/app/src/main/res/layout/simple_clicker_mvvm.xml) to the [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt):
