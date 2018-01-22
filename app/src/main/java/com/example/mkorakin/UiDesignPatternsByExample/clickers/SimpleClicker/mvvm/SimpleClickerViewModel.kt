@@ -3,13 +3,12 @@ package com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mv
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
-import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.ClickerController
 import io.reactivex.disposables.Disposable
 
 /**
  * A View Model representing the state of a clicker.
  */
-internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel, ClickerController {
+internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel {
 
     private val model = App.model
     private var subscription: Disposable

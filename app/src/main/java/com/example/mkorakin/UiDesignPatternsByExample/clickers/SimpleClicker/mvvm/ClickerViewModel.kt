@@ -6,4 +6,5 @@ interface ClickerViewModel {
 
     val count: LiveData<Int>
 
+    fun incrementCount()
 }

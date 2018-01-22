@@ -3,11 +3,10 @@ package com.example.mkorakin.UiDesignPatternsByExample.clickers.ToolbarClicker
 import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
-import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.ClickerController
 import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvvm.ClickerViewModel
 import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.RxLiveDataAdapter
 
-class OnDemandClickerViewModel : ViewModel(), ClickerViewModel, ClickerController {
+class OnDemandClickerViewModel : ViewModel(), ClickerViewModel {
 
     private val LOG_TAG = "OnDemandClickerVm" // TODO: OnDemandClickerViewModel::class.simpleName
     private val model = App.model

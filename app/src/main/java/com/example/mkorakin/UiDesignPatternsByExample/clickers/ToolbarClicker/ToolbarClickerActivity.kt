@@ -18,7 +18,6 @@ class ToolbarClickerActivity : AppCompatActivity() {
 
         // Bind to button view
         binding.vm = vm
-        binding.controller = vm
 
         // Bind to activity title
         vm.count.observe(this, Observer<Int> {

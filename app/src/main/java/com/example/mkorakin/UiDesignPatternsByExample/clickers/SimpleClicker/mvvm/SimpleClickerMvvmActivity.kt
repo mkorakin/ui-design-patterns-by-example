@@ -14,9 +14,6 @@ class SimpleClickerMvvmActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<SimpleClickerMvvmBinding>(this, R.layout.simple_clicker_mvvm)
         binding.setLifecycleOwner(this)
 
-        val vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
-
-        binding.vm = vm
-        binding.controller = vm
+        binding.vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
     }
 }
