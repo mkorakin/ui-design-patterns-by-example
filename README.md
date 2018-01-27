@@ -96,7 +96,7 @@ All examples follow the same behavior:
 In MVC the View reflects the Model directly, and uses the Controller for modifying it.
 
 In the clicker example, the [Controller](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvc/SimpleClickerController.kt) 
-provides incrementCount to control the Model:
+translates click events to Model modifications:
 ```kotlin
 class SimpleClickerController {
 
