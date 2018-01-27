@@ -16,8 +16,7 @@ See brief descriptions below and full implementation in the [repo](/app/src/main
   * [Long-Press Clicker - **MVC**](#long-press-clicker---mvc): Controller state
   * [Two Thumbs Clicker - **MVVM**](#two-thumbs-clicker---mvvm): View Model state
   * [Toolbar Clicker - **MVVM**](#toolbar-clicker---mvvm): View Model sharing
-  * [Clicker Editor - **MVP**](#clicker-editor---mvp): View state
-  * [Animating Clicker - **MVP**](#animating-clicker---mvp): View state changes
+  * [Animating Clicker - **MVP**](#animating-clicker---mvp): View state
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
 
@@ -333,24 +332,11 @@ viewModelCount = model.count
         .to({ rx -> RxLiveDataAdapter(rx) })
 
 ```
-## Clicker Editor - MVP
+## Animating Clicker - MVP
 **View state**  
 As a Presenter holds a reference to the View, it can access its state.
-
-In Clicker Editor we want a clicker that uses the same text box to allow editing the counter value, and for showing the count. The UI shouldn't show count updates while it is being edited.
-
-To implement this, in [ClickerEditorPresenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorPresenter.kt) we inspect the 
-[View.isEditing()](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ClickerEditor/ClickerEditorView.kt) before calling displayCount:
-```kotlin
-model.count
-    .filter({ !view.isEditing() })
-    .subscribe(view::displayCount))
-```
-## Animating Clicker - MVP
-**View state changes**  
-In MVP the Presenter triggers changes to the state of the View.  
   
-In Animating Clicker we want a clicker that animates on each click.  
+In Animating Clicker we want a clicker that animates on each click. Clicks on an animating view should not trigger more animations. 
   
 To implement this we’ll construct a [Presenter](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/AnimatingClicker/AnimatingClickerPresenter.kt) 
 with an [AnimatingClickerView](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/AnimatingClicker/AnimatingClickerView.kt):
