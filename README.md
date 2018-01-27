@@ -348,7 +348,7 @@ interface AnimatingClickerView {
     fun displayCount(count: Int)
 }
 ```
-and animate it on clicks. While animating, clicks will increment the Models count, but won't trigger more animations:
+and animate it on clicks. While animating, clicks will increment the Model count, but won't trigger more animations:
 ```kotlin
 fun incrementCount() {
     if (!view.isAnimating) {
