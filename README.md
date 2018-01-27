@@ -4,7 +4,7 @@
 
 **Then more features are added to highlight traits of each pattern.**  
   
-See brief descriptions below and full Android implementation in the [repo](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers).
+See brief descriptions below and full implementation in the [repo](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers).
   
 - [The Model](#the-model)
 - [Examples](#examples)
