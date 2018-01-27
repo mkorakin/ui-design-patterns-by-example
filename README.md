@@ -47,6 +47,30 @@ The exact same Simple Clicker (a button that displays a count of the total click
  - [Simple Clicker - MVVM](#simple-clicker---mvvm)
  - [Simple Clicker - MVP](#simple-clicker---mvp)
 
+All examples follow the same behavior:
+- User clicks end up modifying the global Model.
+- The Model is observed. Changes in the Model end up changing the state of the displayed count.
+```
+┌───────────────────────────────────────────────┐
+│                                               │
+│  View                                         │
+│                                               │
+└───────────────────────────────────────────────┘
+
+
+                  ?  ?  ?            
+
+                                   
+    |                               ┋
+    | Modify                        ┋ Observe
+    ▼                               ▽
+┌───────────────────────────────────────────────┐
+│                                               │
+│  Model                                        │
+│                                               │
+└───────────────────────────────────────────────┘
+```
+
 ### Simple Clicker - MVC
 ```
 ┌───────────────────────────────────────────────┐
