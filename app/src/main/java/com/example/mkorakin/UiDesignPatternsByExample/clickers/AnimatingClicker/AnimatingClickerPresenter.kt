@@ -15,8 +15,8 @@ class AnimatingClickerPresenter(private val view: AnimatingClickerView) : Clicke
     }
 
     override fun incrementCount() {
+        model.incrementCount()
         if (!view.isAnimating) {
-            model.incrementCount()
             view.animate()
         }
     }
