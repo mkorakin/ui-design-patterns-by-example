@@ -31,7 +31,6 @@ provides an interface for observing and for modifying the global click state tha
 val count : Observable<Int>
   
 fun incrementCount()
-fun setCount(count: Int)
 ```
 
 The same [InMemoryModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/InMemoryModel.kt)
