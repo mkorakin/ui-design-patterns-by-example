@@ -101,9 +101,11 @@ In the clicker example, the [Controller](/app/src/main/java/com/example/mkorakin
 provides incrementCount to control the Model:
 ```kotlin
 class SimpleClickerController {
+
     fun onClick() {
         model.incrementCount()
     }
+    
 }
 ```
 ![Android](https://developer.android.com/images/robot-tiny.png) 
@@ -149,7 +151,8 @@ In MVVM the View refelects the state of the View Model.
 
 In the clicker example, the View Model exposes a count state and the controls for modifying it. To manage its state [SimpleClickerViewModel](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/SimpleClickerViewModel.kt)  increments the Model's count and observes changes in the Model:  
 ```kotlin
-class SimpleClickerViewModel {
+class SimpleClickerViewModel {  
+
     val viewModelCount: MutableLiveData<Int>
 
     fun incrementCount() {
@@ -205,6 +208,7 @@ interface ClickerView {
 
 ```kotlin
 class SimpleClickerPresenter {
+
     constructor(view: ClickerView) {
         model.count.subscribe(view::displayCount)
     }
@@ -222,6 +226,7 @@ interface:
 binding = DataBindingUtil.setContentView(this, R.layout.simple_clicker_mvp)
 
 presenter = SimpleClickerPresenter(object : ClickerView {
+
     override fun displayCount(count: Int) {
         binding.simpleClickerButton.text = count.toString()
     }
