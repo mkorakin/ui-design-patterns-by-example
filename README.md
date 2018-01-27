@@ -56,7 +56,7 @@ The exact same Simple Clicker (a button that displays a count of the total click
 └───────────────────────────────────────────────┘
     ┋                              │
     ┋                              │
-    ┋ Observe [Model.count]        │ Modify [incrementCount]
+    ┋ Observe Model.count          │ OnClick
     ┋                              ▼
     ┋                   ┌───────────────────────┐
     ┋                   │                       │
@@ -78,7 +78,7 @@ In the clicker example, the [Controller](/app/src/main/java/com/example/mkorakin
 provides incrementCount to control the Model:
 ```kotlin
 class SimpleClickerController {
-    fun incrementCount() {
+    fun onClick() {
         model.incrementCount()
     }
 }
@@ -106,7 +106,7 @@ binding.controller = SimpleClickerController()
 │                                               │
 └───────────────────────────────────────────────┘
     ┋                             │
-    ┋ Observe [count]             │ Modify [incrementCount]
+    ┋ Observe count               │ incrementCount
     ▽                             ▼
 ┌───────────────────────────────────────────────┐
 │                                               │
@@ -152,18 +152,18 @@ binding.vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
 │                                               │
 │  View                                         │
 │                                               │
-└───────────────────────────────────────────────┘
-   ▲                                        |
-   | Modify [ClickerView.displayCount]      | Modify [incrementCount]
-   |                                        ▼
+└───────────────────────────────── ──────────────┘
+   ▲                              |
+   | displayCount                 | incrementCount
+   |                              ▼
 ┌───────────────────────────────────────────────┐
 │                                               │
 │  Presenter                                    │
 │                                               │
 └───────────────────────────────────────────────┘
-    ┋                                       |
-    ┋ Observe                               | Modify
-    ▽                                       ▼
+    ┋                             |
+    ┋ Observe                     | Modify
+    ▽                             ▼
 ┌───────────────────────────────────────────────┐
 │                                               │
 │  Model                                        │
