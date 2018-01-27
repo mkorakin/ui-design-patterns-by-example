@@ -358,6 +358,7 @@ fun incrementCount() {
 }
 ```
 
+![Android](https://developer.android.com/images/robot-tiny.png) 
 Animation implementation will be done in the [View](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/AnimatingClicker/AnimatingClickerActivity.kt):
 ```kotlin
 override fun animate() {
