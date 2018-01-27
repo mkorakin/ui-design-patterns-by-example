@@ -54,18 +54,17 @@ The exact same Simple Clicker (a button that displays a count of the total click
 │  View                                         │
 │                                               │
 └───────────────────────────────────────────────┘
-    ┋                              │
-    ┋                              │
-    ┋ Observe Model.count          │ OnClick
-    ┋                              ▼
-    ┋                   ┌───────────────────────┐
-    ┋                   │                       │
-    ┋                   │      Controller       │
-    ┋                   │                       │
-    ┋                   └───────────────────────┘
-    ┋                              │
-    ┋                              │ Modify
-    ▽                              ▼
+    │                               ┋
+    │ OnClick                       ┋ Observe Model.count 
+    ▼                               ┋
+┌───────────────────────┐           ┋
+│                       │           ┋
+│      Controller       │           ┋
+│                       │           ┋
+└───────────────────────┘           ┋
+    │                               ┋
+    │  Modify                       ┋ 
+    ▼                               ▽
 ┌───────────────────────────────────────────────┐
 │                                               │
 │  Model                                        │
@@ -105,17 +104,17 @@ binding.controller = SimpleClickerController()
 │  View                                         │
 │                                               │
 └───────────────────────────────────────────────┘
-    ┋                             │
-    ┋ Observe count               │ incrementCount
-    ▽                             ▼
+    |                               ┋
+    | incrementCount                ┋ Observe count
+    ▼                               ▽
 ┌───────────────────────────────────────────────┐
 │                                               │
 │  View Model                                   │
 │                                               │
 └───────────────────────────────────────────────┘
-    ┋                             |
-    ┋ Observe                     | Modify
-    ▽                             ▼
+    |                               ┋
+    | Modify                        ┋ Observe
+    ▼                               ▽
 ┌───────────────────────────────────────────────┐
 │                                               │
 │  Model                                        │
@@ -152,18 +151,18 @@ binding.vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
 │                                               │
 │  View                                         │
 │                                               │
-└───────────────────────────────── ──────────────┘
-   ▲                              |
-   | displayCount                 | incrementCount
-   |                              ▼
+└───────────────────────────────────────────────┘
+   |                                ▲
+   | incrementCount                 | displayCount
+   ▼                                |
 ┌───────────────────────────────────────────────┐
 │                                               │
 │  Presenter                                    │
 │                                               │
 └───────────────────────────────────────────────┘
-    ┋                             |
-    ┋ Observe                     | Modify
-    ▽                             ▼
+    |                               ┋
+    | Modify                        ┋ Observe
+    ▼                               ▽
 ┌───────────────────────────────────────────────┐
 │                                               │
 │  Model                                        │
