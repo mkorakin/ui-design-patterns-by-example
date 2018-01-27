@@ -286,6 +286,10 @@ fun incrementCount() {
     model.incrementCount()
     localCount.set(localCount.get()?.plus(1))
 }
+
+init {
+    model.count.subscribe(globalCount::set)
+}
 ```
 ![Android](https://developer.android.com/images/robot-tiny.png) 
 Two View Models are created, each bound to a button in the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/TwoThumbClicker/TwoThumbsClickerActivity.kt):
@@ -301,6 +305,7 @@ Multiple views can share the same View Model instance.
 
 In toolbar clicker we want the clicks to be displayed both on a button and on the screen's toolbar.
   
+![Android](https://developer.android.com/images/robot-tiny.png) 
 To implement this, in the [Activity](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/ToolbarClicker/ToolbarClickerActivity.kt)
 we bind the same [View Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/clickers/SimpleClicker/mvvm/ClickerViewModel.kt)
 both to the button and to the activity's title:
