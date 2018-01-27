@@ -26,7 +26,7 @@ Any suggestions for more examples, or different implementations/interpretations 
 The Model represents the state of the application. 
 
 In the clicker examples we want to implement views that count clicks. The application [Model](/app/src/main/java/com/example/mkorakin/UiDesignPatternsByExample/Model/Model.kt) 
-provides an interface for observing and for modifying the global click state:
+provides an interface for observing and for modifying the global click state that is shared by all the screens in the app:
 
 ```kotlin
 val count : Observable<Int>
