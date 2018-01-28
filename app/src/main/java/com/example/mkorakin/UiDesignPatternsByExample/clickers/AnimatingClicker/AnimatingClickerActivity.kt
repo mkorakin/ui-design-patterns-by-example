@@ -1,13 +1,12 @@
 package com.example.mkorakin.UiDesignPatternsByExample.clickers.AnimatingClicker
 
-import android.animation.Animator
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.mkorakin.UiDesignPatternsByExample.R
 import com.example.mkorakin.UiDesignPatternsByExample.databinding.SimpleClickerMvpBinding
 
-class AnimatingClickerActivity : AppCompatActivity(), Animator.AnimatorListener {
+class AnimatingClickerActivity : AppCompatActivity() {
 
     var animating = false
 
@@ -23,7 +22,10 @@ class AnimatingClickerActivity : AppCompatActivity(), Animator.AnimatorListener 
                     get() = animating
 
                 override fun animate() {
-                    binding.simpleClickerButton.animate().rotationBy(360f).setListener(listener)
+                    binding.simpleClickerButton.animate()
+                            .withStartAction({animating = true})
+                            .withEndAction({animating = false})
+                            .rotationBy(360f)
                 }
                 
                 override fun displayCount(count: Int) {
@@ -38,21 +40,5 @@ class AnimatingClickerActivity : AppCompatActivity(), Animator.AnimatorListener 
     override fun onDestroy() {
         presenter.dispose()
         super.onDestroy()
-    }
-
-    override fun onAnimationRepeat(animation: Animator?) {
-        animating = true
-    }
-
-    override fun onAnimationEnd(animation: Animator?) {
-        animating = false
-    }
-
-    override fun onAnimationCancel(animation: Animator?) {
-        animating = false
-    }
-
-    override fun onAnimationStart(animation: Animator?) {
-        animating = true
     }
 }
