@@ -20,7 +20,7 @@ See brief descriptions below and full implementation in the [repo](/app/src/main
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
   
-Not familiar with data-binding? See a quick intro [below](#--android--https---developerandroidcom-images-robot-tinypng--data-binding). 
+Not familiar with data-binding? See a quick intro [below](#-data-binding). 
 
 # The Model
 
