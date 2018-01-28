@@ -6,7 +6,7 @@ import com.example.mkorakin.UiDesignPatternsByExample.Model.App
 
 class TouchGestureClickerController : View.OnTouchListener {
 
-    val model = App.model
+    private val model = App.model
 
     override fun onTouch(view: View, event: MotionEvent): Boolean {
         if (event.action == MotionEvent.ACTION_DOWN) {

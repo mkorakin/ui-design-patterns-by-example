@@ -7,7 +7,7 @@ import com.example.mkorakin.UiDesignPatternsByExample.Model.App
  */
 internal class SimpleClickerController : ClickerController {
 
-    val model = App.model
+    private val model = App.model
 
     /**
      * Increment the Model's count.

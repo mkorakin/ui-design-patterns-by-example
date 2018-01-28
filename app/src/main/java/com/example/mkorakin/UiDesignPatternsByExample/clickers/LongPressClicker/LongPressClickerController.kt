@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit
 
 class LongPressClickerController : View.OnTouchListener {
 
-    val LONG_PRESS_INTERVAL_MILLIS = 500L
+    private val LONG_PRESS_INTERVAL_MILLIS = 500L
 
-    val model = App.model
+    private val model = App.model
 
     private var timerSubscription: Disposable? = null
 
