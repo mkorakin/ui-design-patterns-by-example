@@ -398,12 +398,12 @@ Layout:
 Activity:
 ```kotlin
 val button = findViewById<Button>(R.id.clicker_button)
-vm.count.subscribe({ updatedCount -> button.text = updatedCount.toString() })
+vm.count.subscribe({ updatedCount -> button.text = updatedCount })
 ```
 **With data binding**  
 Layout:
 ```xml
-<Button android:onClick="@{vm::incrementCount}" ... />
+<Button android:text="@{vm::count}" ... />
 ```
 Activity:
 ```kotlin
