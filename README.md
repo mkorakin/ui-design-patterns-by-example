@@ -368,26 +368,7 @@ override fun animate() {
     binding.simpleClickerButton.animate().rotationBy(360f)
 }
 ```
-## ![Rx](http://reactivex.io/assets/Rx_Icon.png) rx 
-ReactiveX documentation [here](http://reactivex.io/documentation/observable.html).  
-As a quick intro - in the examples above, ```model.count.subscribe(viewModelCount::set)``` is pretty much the same as:
-```kotlin
-model.setOnCountUpdateListener({ updatedCount -> viewModelCount.set(updatedCount) })
-```
-Or without lambdas:
-```kotlin
-class ViewModel : OnCountUpdateListener {
-
-    init {
-        model.setOnCountUpdateListener(this)
-    }
-
-    override fun onCountUpdate(updatedCount: Int) {
-        viewModelCount.set(updatedCount)
-    }
-}
-```
-## ![Android](https://developer.android.com/images/robot-tiny.png) Data binding
+# ![Android](https://developer.android.com/images/robot-tiny.png) Data binding
 Android documentation [here](https://developer.android.com/topic/libraries/data-binding/index.html).  
 As a quick intro - the 2 examples below are pretty much the same:  
 **No data binding**  
