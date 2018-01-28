@@ -19,6 +19,8 @@ See brief descriptions below and full implementation in the [repo](/app/src/main
   * [Animating Clicker - **MVP**](#animating-clicker---mvp): View state
   
 Any suggestions for more examples, or different implementations/interpretations are most welcome.
+  
+Not familiar with data-binding? See a quick intro [below](#--android--https---developerandroidcom-images-robot-tinypng--data-binding). 
 
 # The Model
 
@@ -370,7 +372,8 @@ override fun animate() {
 ```
 # ![Android](https://developer.android.com/images/robot-tiny.png) Data binding
 Android documentation [here](https://developer.android.com/topic/libraries/data-binding/index.html).  
-As a quick intro - the 2 examples below are pretty much the same:  
+As a quick intro - the 2 examples below are pretty much the same:
+  
 **No data binding**  
 Layout:
 ```xml
