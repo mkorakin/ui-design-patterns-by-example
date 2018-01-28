@@ -151,7 +151,7 @@ In the clicker example, the View Model exposes a count state and the controls fo
 ```kotlin
 class SimpleClickerViewModel {  
 
-    val viewModelCount: MutableLiveData<Int>
+    val viewModelCount: ObservableField<Int>
 
     fun incrementCount() {
         model.incrementCount()
