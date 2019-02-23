@@ -12,7 +12,7 @@ import io.reactivex.disposables.Disposable
  * The [Observable] will be subscribed on the first call to [LiveData.onActive].
  * To dispose the subscription, call [dispose].
  */
-class RxLiveDataAdapter<T>(val rx: Observable<T>) : LiveData<T>(), Disposable {
+class RxLiveDataAdapter<T>(val rx: Observable<T>) : LiveData<T>(), Disposable { // TODO: LiveDataReactiveStreams
 
     private var rxSubscription: Disposable? = null
 
