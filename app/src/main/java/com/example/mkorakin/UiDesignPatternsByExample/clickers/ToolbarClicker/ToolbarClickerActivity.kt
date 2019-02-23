@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.mkorakin.UiDesignPatternsByExample.R
 import com.example.mkorakin.UiDesignPatternsByExample.databinding.SimpleClickerMvvmBinding
-import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.RxLiveDataAdapter
+import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.RxLiveDataAdapter.Companion.toLiveData
 
 class ToolbarClickerActivity : AppCompatActivity() {
 
@@ -23,10 +23,10 @@ class ToolbarClickerActivity : AppCompatActivity() {
             vm.incrementCount()
         }
 
-        binding.viewState = vm.count.to { RxLiveDataAdapter(it) }
+        binding.viewState = vm.count.toLiveData()
 
         // Bind to activity title
-        vm.count.to { RxLiveDataAdapter(it) }.observe(this, Observer<Int> { count ->
+        vm.count.toLiveData().observe(this, Observer<Int> { count ->
             title = count?.toString()
         })
     }

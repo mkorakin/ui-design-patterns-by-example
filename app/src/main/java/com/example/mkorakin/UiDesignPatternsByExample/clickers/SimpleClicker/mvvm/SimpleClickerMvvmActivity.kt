@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.mkorakin.UiDesignPatternsByExample.R
 import com.example.mkorakin.UiDesignPatternsByExample.databinding.SimpleClickerMvvmBinding
-import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.RxLiveDataAdapter
+import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.RxLiveDataAdapter.Companion.toLiveData
 
 class SimpleClickerMvvmActivity : AppCompatActivity() {
 
@@ -23,6 +23,6 @@ class SimpleClickerMvvmActivity : AppCompatActivity() {
             vm.incrementCount()
         }
 
-        binding.viewState = vm.count.to { RxLiveDataAdapter(it) }
+        binding.viewState = vm.count.toLiveData()
     }
 }

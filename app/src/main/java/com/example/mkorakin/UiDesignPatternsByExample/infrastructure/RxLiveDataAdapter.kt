@@ -33,4 +33,9 @@ class RxLiveDataAdapter<T>(val rx: Observable<T>) : LiveData<T>(), Disposable {
     override fun dispose() {
         rxSubscription?.dispose()
     }
+
+    companion object {
+        fun <T> Observable<T>.toLiveData(): LiveData<T> =
+            this.to { RxLiveDataAdapter(it) }
+    }
 }
