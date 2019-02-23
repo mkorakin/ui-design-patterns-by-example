@@ -3,6 +3,7 @@ package com.example.mkorakin.UiDesignPatternsByExample.clickers.TwoThumbClicker
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
+import com.example.mkorakin.UiDesignPatternsByExample.Model.Model
 import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.ClickerController
 import io.reactivex.disposables.Disposable
 
@@ -10,11 +11,11 @@ import io.reactivex.disposables.Disposable
  * A View Model that provides both the count of the local clicks, and the total
  * number of clicks in the app.
  */
-class StatefulClickerViewModel : ViewModel(), ClickerViewModel, ClickerController {
+class StatefulClickerViewModel(
+    private val model: Model = App.model
+) : ViewModel(), ClickerViewModel, ClickerController {
 
-    private val model = App.model
     private var subscription: Disposable
-
 
     /**
      * The count of clicks on this clicker.

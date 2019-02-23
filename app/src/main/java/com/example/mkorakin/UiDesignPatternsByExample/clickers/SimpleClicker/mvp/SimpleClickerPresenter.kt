@@ -1,15 +1,18 @@
 package com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvp
 
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
+import com.example.mkorakin.UiDesignPatternsByExample.Model.Model
 import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvc.ClickerController
 import io.reactivex.disposables.Disposable
 
 /**
  * A Presenter displaying clicks on the attached [ClickerView].
  */
-internal class SimpleClickerPresenter(view: ClickerView) : ClickerController {
+internal class SimpleClickerPresenter(
+    view: ClickerView,
+    private val model: Model = App.model
+) : ClickerController {
 
-    private val model = App.model
     private var subscription: Disposable
 
     init {

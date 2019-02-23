@@ -2,6 +2,7 @@ package com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mv
 
 import android.arch.lifecycle.ViewModel
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
+import com.example.mkorakin.UiDesignPatternsByExample.Model.Model
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.BehaviorSubject
@@ -9,9 +10,10 @@ import io.reactivex.subjects.BehaviorSubject
 /**
  * A View Model representing the state of a clicker.
  */
-internal class SimpleClickerViewModel : ViewModel(), ClickerViewModel {
+internal class SimpleClickerViewModel(
+    private val model: Model = App.model
+) : ViewModel(), ClickerViewModel {
 
-    private val model = App.model
     private var subscription: Disposable
 
     /**

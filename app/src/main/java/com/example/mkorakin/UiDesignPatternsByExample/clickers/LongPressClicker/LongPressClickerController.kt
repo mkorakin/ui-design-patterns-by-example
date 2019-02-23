@@ -3,15 +3,16 @@ package com.example.mkorakin.UiDesignPatternsByExample.clickers.LongPressClicker
 import android.view.MotionEvent
 import android.view.View
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
+import com.example.mkorakin.UiDesignPatternsByExample.Model.Model
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
-class LongPressClickerController : View.OnTouchListener {
+class LongPressClickerController(
+    private val model: Model = App.model
+) : View.OnTouchListener {
 
     private val LONG_PRESS_INTERVAL_MILLIS = 500L
-
-    private val model = App.model
 
     private var timerSubscription: Disposable? = null
 
@@ -19,8 +20,8 @@ class LongPressClickerController : View.OnTouchListener {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 timerSubscription = Observable
-                        .timer(LONG_PRESS_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)
-                        .subscribe({ model.incrementCount() })
+                    .timer(LONG_PRESS_INTERVAL_MILLIS, TimeUnit.MILLISECONDS)
+                    .subscribe({ model.incrementCount() })
                 view.performClick()
             }
             MotionEvent.ACTION_UP -> timerSubscription?.dispose()
