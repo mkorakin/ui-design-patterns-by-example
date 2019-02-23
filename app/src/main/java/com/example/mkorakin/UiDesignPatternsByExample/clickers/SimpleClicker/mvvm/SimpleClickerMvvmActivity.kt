@@ -17,7 +17,6 @@ class SimpleClickerMvvmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<SimpleClickerMvvmBinding>(this, R.layout.simple_clicker_mvvm)
         binding.lifecycleOwner = this
-        binding.executePendingBindings() // TODO: Without this setOnClickListener is overridden
 
         binding.clickerButton.setOnClickListener {
             vm.incrementCount()

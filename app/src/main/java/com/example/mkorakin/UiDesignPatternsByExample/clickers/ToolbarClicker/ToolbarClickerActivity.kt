@@ -17,7 +17,7 @@ class ToolbarClickerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<SimpleClickerMvvmBinding>(this, R.layout.simple_clicker_mvvm)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
         binding.clickerButton.setOnClickListener {
             vm.incrementCount()
