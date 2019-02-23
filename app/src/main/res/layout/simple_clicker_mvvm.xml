@@ -15,8 +15,7 @@
   <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <!-- TODO: use binding adapter for presenting Int. -->
+    
     <Button
       android:id="@+id/clickerButton"
       android:layout_width="wrap_content"
