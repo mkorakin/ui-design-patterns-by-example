@@ -1,6 +1,8 @@
 package com.example.mkorakin.UiDesignPatternsByExample.infrastructure
 
+import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Observer
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 
@@ -35,7 +37,12 @@ class RxLiveDataAdapter<T>(val rx: Observable<T>) : LiveData<T>(), Disposable {
     }
 
     companion object {
+
         fun <T> Observable<T>.toLiveData(): LiveData<T> =
             this.to { RxLiveDataAdapter(it) }
+
+        fun <T> Observable<T>.observeLiveData(lifecycleOwner: LifecycleOwner, onChanged: (T?) -> Unit) {
+            this.toLiveData().observe(lifecycleOwner, Observer<T> { onChanged(it) })
+        }
     }
 }
