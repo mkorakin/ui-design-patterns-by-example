@@ -1,10 +1,10 @@
 package com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvvm
 
-import android.arch.lifecycle.LiveData
+import io.reactivex.Observable
 
 interface ClickerViewModel {
 
-    val count: LiveData<Int>
+    val count: Observable<Int>
 
     fun incrementCount()
 }

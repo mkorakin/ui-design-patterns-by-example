@@ -6,14 +6,23 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.mkorakin.UiDesignPatternsByExample.R
 import com.example.mkorakin.UiDesignPatternsByExample.databinding.SimpleClickerMvvmBinding
+import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.RxLiveDataAdapter
 
 class SimpleClickerMvvmActivity : AppCompatActivity() {
+
+    private val vm: SimpleClickerViewModel
+        get() = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<SimpleClickerMvvmBinding>(this, R.layout.simple_clicker_mvvm)
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
+        binding.executePendingBindings() // TODO: Without this setOnClickListener is overridden
 
-        binding.vm = ViewModelProviders.of(this).get(SimpleClickerViewModel::class.java)
+        binding.clickerButton.setOnClickListener {
+            vm.incrementCount()
+        }
+
+        binding.viewState = vm.count.to { RxLiveDataAdapter(it) }
     }
 }

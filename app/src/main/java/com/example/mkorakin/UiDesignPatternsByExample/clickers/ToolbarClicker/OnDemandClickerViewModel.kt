@@ -4,14 +4,14 @@ import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.example.mkorakin.UiDesignPatternsByExample.Model.App
 import com.example.mkorakin.UiDesignPatternsByExample.clickers.SimpleClicker.mvvm.ClickerViewModel
-import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.RxLiveDataAdapter
+import io.reactivex.Observable
 
-class OnDemandClickerViewModel : ViewModel(), ClickerViewModel {
+class OnDemandClickerViewModel : ViewModel(), ClickerViewModel { // MKOR!!! remove.
 
     private val LOG_TAG = "OnDemandClickerVm" // TODO: OnDemandClickerViewModel::class.simpleName
     private val model = App.model
 
-    override val count: RxLiveDataAdapter<Int>
+    override val count: Observable<Int>
 
     init {
         count = model.count
@@ -20,15 +20,9 @@ class OnDemandClickerViewModel : ViewModel(), ClickerViewModel {
                 .doOnDispose({Log.i(LOG_TAG, "Disposing subscription to model.count")})
 
                 .replay(1).refCount()
-                .to({rx -> RxLiveDataAdapter(rx) })
     }
 
     override fun incrementCount() {
         model.incrementCount()
-    }
-
-    override fun onCleared() {
-        count.dispose()
-        super.onCleared()
     }
 }
