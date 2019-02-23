@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.mkorakin.UiDesignPatternsByExample.R
 import com.example.mkorakin.UiDesignPatternsByExample.databinding.SimpleClickerMvvmBinding
-import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.RxLiveDataAdapter.Companion.toLiveData
+import com.example.mkorakin.UiDesignPatternsByExample.infrastructure.toLiveData
 
 class SimpleClickerMvvmActivity : AppCompatActivity() {
 
